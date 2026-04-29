@@ -2,10 +2,10 @@
   "$schema": "https://gei-agent.local/schemas/pipeline-state.schema.json",
   "pipeline_version": "v6.1",
   "created_at": "2026-04-29T00:30:00Z",
-  "updated_at": "2026-04-29T06:25:00Z",
+  "updated_at": "2026-04-29T06:50:00Z",
   "output_dir": "output/零点一元",
   "current_phase": "D",
-  "current_step": "D.round-020-complete",
+  "current_step": "D.round-021-complete",
   "phase_status": {
     "A": "completed",
     "B": "completed",
@@ -42,7 +42,8 @@
     "D.round-017-section-reorder",
     "D.round-018-hero-cta-phase-d-refresh",
     "D.round-019-phase-d-deep-dive-charts",
-    "D.round-020-phase-d-palette-fix"
+    "D.round-020-phase-d-palette-fix",
+    "D.round-021-mobile-optimization"
   ],
   "confirmed_params": {
     "customer_name": "小说创作",

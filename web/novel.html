@@ -2,7 +2,8 @@
 <html lang="zh-Hans">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#111316" />
   <title>零点一元 · 章节目录</title>
   <meta name="description" content="《零点一元》14 章节目录页 — 作者:刘仙升 (@LukeLiu95)。" />
   <meta name="author" content="刘仙升" />
@@ -85,6 +86,23 @@
     }
     .back-link a { color: var(--r-muted); text-decoration: none; }
     .back-link a:hover { color: var(--r-rust); }
+
+    @media (max-width: 640px) {
+      .toc-hero { padding: 38px 0 30px; }
+      .toc-hero p { font-size: 15px; }
+      .toc-list { width: calc(100% - 24px); margin-top: 24px; }
+      .toc-list a {
+        grid-template-columns: 56px minmax(0,1fr);
+        row-gap: 4px;
+        column-gap: 12px;
+        padding: 14px 4px;
+        min-height: 56px;
+      }
+      .toc-list .t { font-size: 16.5px; line-height: 1.4; grid-column: 2; }
+      .toc-list .no { font-size: 12px; align-self: start; padding-top: 3px; }
+      .toc-list .day { grid-column: 2; font-size: 11.5px; }
+      .back-link { width: calc(100% - 24px); }
+    }
   </style>
 </head>
 <body>

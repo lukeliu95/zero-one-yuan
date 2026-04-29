@@ -2,7 +2,8 @@
 <html lang="zh-Hans">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#111316" />
   <title>零点一元 · 小说生成过程页</title>
   <meta name="description" content="《零点一元》小说生成过程、世界观、人物、文物与原文完整阅读路径。作者:刘仙升 (@LukeLiu95)。" />
   <meta name="author" content="刘仙升" />
@@ -810,6 +811,114 @@
       .pdd-stats { width: 100%; }
       .pdd-stat { flex: 1; min-width: 0; padding: 12px 8px; }
       .pdd-stat b { font-size: 20px; }
+    }
+
+    /* ===== round-021 mobile polish ===== */
+    html, body { overflow-x: hidden; }
+    .pdd-cells-wrap { position: relative; }
+    .pdd-cells-wrap::after {
+      content: "← 滑动 →";
+      display: none;
+      position: absolute;
+      right: 8px; top: 6px;
+      font: 600 10px/1 var(--mono);
+      color: var(--muted);
+      letter-spacing: .12em;
+      background: var(--paper);
+      padding: 4px 6px;
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      pointer-events: none;
+    }
+    @media (max-width: 768px) {
+      .pdd-cells-wrap::after { display: block; }
+    }
+
+    /* Touch targets ≥ 44px on touch devices */
+    @media (hover: none) and (pointer: coarse) {
+      .nav a { padding: 11px 12px; font-size: 14px; min-height: 44px; display: inline-flex; align-items: center; }
+      .cta-primary, .cta-secondary { min-height: 44px; }
+      .nav-link { padding: 11px 10px; }
+    }
+
+    /* Tablet & large phone */
+    @media (max-width: 768px) {
+      section { padding: clamp(38px, 9vw, 64px) 0; }
+      .section-head { grid-template-columns: 1fr; gap: 14px; margin-bottom: 22px; }
+      .relics { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .characters { grid-template-columns: 1fr; gap: 14px; }
+      .person { padding: 20px; }
+      .relic { min-height: 180px; padding: 16px; }
+      .waterline { min-height: 360px; padding: 24px; }
+      .phase { min-height: 0; padding: 20px; }
+      .phase-d-stub { display: none; } /* deep dive 段直接接管 */
+      .footer { font-size: 13px; padding: 22px 0 36px; }
+    }
+
+    /* Phone */
+    @media (max-width: 640px) {
+      :root { --gutter: 16px; }
+      .topbar .shell { flex-direction: row; align-items: center; padding: 8px 0; gap: 12px; min-height: 52px; flex-wrap: nowrap; }
+      .brand { font-size: 17px; flex: 0 0 auto; }
+      .nav { flex: 1 1 auto; min-width: 0; gap: 2px; -webkit-overflow-scrolling: touch; }
+      .nav a {
+        padding: 10px 9px;
+        font-size: 12.5px;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        white-space: nowrap;
+      }
+      .hero-inner { padding: 44px 0 32px; }
+      h2 { font-size: clamp(26px, 8vw, 36px); }
+      .intro { font-size: 16px; }
+      .hero-stats { grid-template-columns: 1fr 1fr; row-gap: 12px; }
+      .hero-stats span:nth-child(3) { grid-column: 1 / -1; }
+      .hero-stats b { font-size: 16px; }
+      .hero-cta { gap: 8px; }
+      .cta-primary, .cta-secondary { padding: 12px 16px; font-size: 14px; }
+      .relics { grid-template-columns: 1fr; }
+      .relic { min-height: 0; }
+      .chapter { grid-template-columns: 56px minmax(0, 1fr); gap: 12px; padding: 14px 0; }
+      .chapter h3 { font-size: 17px; line-height: 1.35; }
+      .chapter p { font-size: 13.5px; line-height: 1.55; }
+      .chapter .day { grid-column: 2; justify-self: start; font-size: 12px; margin-top: 4px; }
+      a.chapter { padding: 14px 4px; min-height: 44px; }
+      a.chapter:hover { background: rgba(167,68,40,.08); }
+      .waterline { min-height: 320px; padding: 20px; }
+      .waterline .below { left: 20px; right: 20px; bottom: 20px; gap: 6px; font-size: 12.5px; }
+      .explorer-toggle { padding: 14px 14px; font-size: 14px; min-height: 48px; }
+      .explorer-side { max-height: 60vh; }
+      .explorer-main { padding: 16px; }
+      #doc-viewer { font-size: 15px; line-height: 1.78; }
+      #doc-viewer h1 { font-size: 22px; }
+      #doc-viewer h2 { font-size: 19px; margin: 22px 0 10px; }
+      #doc-viewer h3 { font-size: 16px; }
+      #doc-viewer pre { font-size: 12px; padding: 12px; }
+      .pdd-head { flex-direction: column; }
+      .pdd-stats { gap: 8px; }
+      .pdd-stat { padding: 10px 6px; min-width: 0; }
+      .pdd-stat b { font-size: 18px; }
+      .pdd-stat span { font-size: 10px; }
+      .phase-d-detail { padding: 20px 14px 22px; }
+      .pdd-card { padding: 16px; }
+      .pdd-timeline { padding: 18px 18px 18px 22px; }
+      .pdd-timeline ol { font-size: 13.5px; line-height: 1.85; padding-left: 18px; }
+    }
+
+    /* Small phone */
+    @media (max-width: 380px) {
+      :root { --gutter: 12px; }
+      h1 { font-size: clamp(36px, 11vw, 52px) !important; }
+      .subtitle { font-size: 16px !important; }
+      .brand { font-size: 15px; }
+      .nav a { font-size: 12px; padding: 10px 7px; }
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+      .hero-stats b { font-size: 15px; }
+      .cta-primary, .cta-secondary { padding: 11px 12px; font-size: 13.5px; }
+      .pdd-title { font-size: 18px; }
+      .pdd-stats { flex-wrap: wrap; }
+      .pdd-stat { flex: 1 1 calc(50% - 4px); }
     }
   </style>
 </head>
