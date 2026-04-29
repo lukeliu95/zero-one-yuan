@@ -708,6 +708,43 @@
       .hero-cta { width: 100%; }
       .cta-primary, .cta-secondary { flex: 1; justify-content: center; }
     }
+  
+    /* Phase D Deep Dive — full-width row with charts */
+    .phase-d-stub { display: flex; flex-direction: column; }
+    .phase-d-stub > p { font-size: 14px; color: rgba(255,255,255,.7); }
+    .phase-d-detail { margin-top: 28px; padding: 28px 28px 32px; background: linear-gradient(180deg, rgba(124,210,213,.06), rgba(167,68,226,.06)); border: 1px solid rgba(255,255,255,.08); border-radius: 16px; }
+    .pdd-head { display: flex; justify-content: space-between; gap: 32px; margin-bottom: 24px; flex-wrap: wrap; }
+    .pdd-left { flex: 1 1 480px; }
+    .pdd-kicker { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--teal, #7CD2D5); font-weight: 700; margin: 0 0 8px; }
+    .pdd-title { font-size: 22px; line-height: 1.4; margin: 0 0 12px; color: #fff; }
+    .pdd-lede { font-size: 14px; line-height: 1.75; color: rgba(255,255,255,.78); margin: 0; max-width: 640px; }
+    .pdd-stats { display: flex; gap: 18px; align-items: flex-start; flex-wrap: wrap; }
+    .pdd-stat { display: flex; flex-direction: column; align-items: center; padding: 10px 16px; background: rgba(0,0,0,.25); border-radius: 10px; min-width: 86px; }
+    .pdd-stat b { font-size: 22px; font-weight: 700; color: var(--teal, #7CD2D5); font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+    .pdd-stat span { font-size: 11px; color: rgba(255,255,255,.6); margin-top: 2px; }
+    .pdd-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 20px; margin-bottom: 24px; }
+    .pdd-card { padding: 20px; background: rgba(0,0,0,.18); border: 1px solid rgba(255,255,255,.06); border-radius: 12px; }
+    .pdd-card h4 { font-size: 14px; font-weight: 600; margin: 0 0 4px; color: #fff; }
+    .pdd-sub { font-size: 12px; color: rgba(255,255,255,.55); margin: 0 0 16px; line-height: 1.5; }
+    .pdd-svg { width: 100%; height: auto; display: block; }
+    .pdd-cells-wrap { overflow-x: auto; padding-bottom: 4px; }
+    .pdd-svg-cells { width: 100%; min-width: 520px; height: auto; display: block; }
+    .pdd-legend { display: flex; gap: 16px; margin-top: 14px; font-size: 12px; color: rgba(255,255,255,.7); flex-wrap: wrap; }
+    .pdd-legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .pdd-legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; }
+    .pdd-timeline { padding: 18px 22px; background: rgba(0,0,0,.18); border: 1px solid rgba(255,255,255,.06); border-radius: 12px; }
+    .pdd-timeline h4 { font-size: 14px; margin: 0 0 12px; color: #fff; }
+    .pdd-timeline ol { margin: 0; padding-left: 20px; font-size: 13.5px; line-height: 1.9; color: rgba(255,255,255,.78); }
+    .pdd-timeline strong { color: var(--teal, #7CD2D5); font-family: ui-monospace, Menlo, monospace; font-weight: 600; }
+    .pdd-delta { color: #A744E2; font-family: ui-monospace, Menlo, monospace; font-weight: 600; font-size: 12.5px; }
+    @media (max-width: 768px) {
+      .phase-d-detail { padding: 20px 16px 24px; margin-top: 20px; }
+      .pdd-head { gap: 18px; }
+      .pdd-grid { grid-template-columns: 1fr; gap: 14px; }
+      .pdd-title { font-size: 19px; }
+      .pdd-stats { width: 100%; }
+      .pdd-stat { flex: 1; min-width: 0; padding: 10px; }
+    }
   </style>
 </head>
 <body>
@@ -791,18 +828,121 @@
               <li>识别妻子戏份与主题词缺口</li>
             </ul>
           </article>
-          <article class="phase phase-d" role="listitem">
+          <article class="phase phase-d phase-d-stub" role="listitem">
             <div class="tag"><span class="dot"></span>Phase D</div>
             <h3>产品进化</h3>
-            <p>17 轮 CEO round 把"写完"推成"交付":前 9 轮做内容(妻子戏、术语迁移、全书扩写、章节抛光、事实纠错、一致性审计、DeepSeek V5 模型重锚),后 8 轮做产品化(web 落地页、全文 HTML 阅读器、双栏文档浏览器、路径修复、IA 节序调整)。</p>
-            <ul>
-              <li>r001-007 · 内容补齐 + 三轴一致性审计</li>
-              <li>r008-010 · web 落地页 + Vercel 部署 + split reader</li>
-              <li>r011-013 · 文学性 retain + 域名上线</li>
-              <li>r014-017 · 全文 HTML + 文档浏览器 + 路径修复 + 节序调整</li>
-              <li>baseline 85.15 → 最终评分 95.00 (+9.85pp)</li>
-            </ul>
+            <p>17 轮 CEO round · 完整曲线见下方专栏 ↓</p>
           </article>
+        </div>
+
+        <div class="phase-d-detail" aria-label="Phase D 产品进化详情">
+          <header class="pdd-head">
+            <div class="pdd-left">
+              <p class="pdd-kicker">Phase D · Deep Dive</p>
+              <h3 class="pdd-title">17 轮 CEO round 把"写完"推成"交付"</h3>
+              <p class="pdd-lede">前 9 轮做内容(妻子戏、术语迁移、全书扩写、章节抛光、事实纠错、一致性审计、DeepSeek V5 模型重锚)。后 9 轮做产品化(web 落地页、全文 HTML 阅读器、双栏文档浏览器、路径修复、IA 节序调整、Hero CTA)。</p>
+            </div>
+            <div class="pdd-stats">
+              <div class="pdd-stat"><b>19</b><span>round 文档</span></div>
+              <div class="pdd-stat"><b>+9.85</b><span>pp 累计</span></div>
+              <div class="pdd-stat"><b>95.00</b><span>当前评分</span></div>
+            </div>
+          </header>
+
+          <div class="pdd-grid">
+            <section class="pdd-card pdd-chart">
+              <h4>评分轨迹 · baseline → 当前</h4>
+              <p class="pdd-sub">每一轮的加权综合分(r000 baseline 到 r018 hero CTA)</p>
+              <svg viewBox="0 0 540 220" role="img" aria-label="Score progression line chart" class="pdd-svg">
+                <line x1="36" y1="170.33333333333334" x2="520" y2="170.33333333333334" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+<text x="28" y="173.83333333333334" text-anchor="end" font-size="10" fill="rgba(255,255,255,.45)" font-family="ui-monospace, Menlo, monospace">85</text>
+<line x1="36" y1="129.33333333333331" x2="520" y2="129.33333333333331" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+<text x="28" y="132.83333333333331" text-anchor="end" font-size="10" fill="rgba(255,255,255,.45)" font-family="ui-monospace, Menlo, monospace">88</text>
+<line x1="36" y1="88.33333333333333" x2="520" y2="88.33333333333333" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+<text x="28" y="91.83333333333333" text-anchor="end" font-size="10" fill="rgba(255,255,255,.45)" font-family="ui-monospace, Menlo, monospace">91</text>
+<line x1="36" y1="47.33333333333333" x2="520" y2="47.33333333333333" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+<text x="28" y="50.83333333333333" text-anchor="end" font-size="10" fill="rgba(255,255,255,.45)" font-family="ui-monospace, Menlo, monospace">94</text>
+
+                <polyline fill="none" stroke="#7CD2D5" stroke-width="2" points="36.0,168.3 62.9,126.6 89.8,108.2 116.7,90.4 143.6,79.4 170.4,63.1 197.3,56.9 224.2,54.2 251.1,54.2 278.0,46.7 304.9,46.7 331.8,43.9 358.7,43.9 385.6,43.9 412.4,38.4 439.3,35.7 466.2,33.7 493.1,33.7 520.0,33.7"/>
+                <polygon fill="url(#pddGrad)" points="36.0,168.3 62.9,126.6 89.8,108.2 116.7,90.4 143.6,79.4 170.4,63.1 197.3,56.9 224.2,54.2 251.1,54.2 278.0,46.7 304.9,46.7 331.8,43.9 358.7,43.9 385.6,43.9 412.4,38.4 439.3,35.7 466.2,33.7 493.1,33.7 520.0,33.7 520.0,184 36.0,184"/>
+                <defs>
+                  <linearGradient id="pddGrad" x1="0" x2="0" y1="0" y2="1">
+                    <stop offset="0%" stop-color="#7CD2D5" stop-opacity=".3"/>
+                    <stop offset="100%" stop-color="#7CD2D5" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <circle cx="36.0" cy="168.3" r="3.2" fill="#fff" stroke="#7CD2D5" stroke-width="2"><title>r000 · 85.15</title></circle>
+<circle cx="62.9" cy="126.6" r="3.2" fill="#fff" stroke="#7CD2D5" stroke-width="2"><title>r001 · 88.2</title></circle>
+<circle cx="89.8" cy="108.2" r="3.2" fill="#fff" stroke="#7CD2D5" stroke-width="2"><title>r002 · 89.55</title></circle>
+<circle cx="116.7" cy="90.4" r="3.2" fill="#fff" stroke="#7CD2D5" stroke-width="2"><title>r003 · 90.85</title></circle>
+<circle cx="143.6" cy="79.4" r="3.2" fill="#fff" stroke="#7CD2D5" stroke-width="2"><title>r004 · 91.65</title></circle>
+<circle cx="170.4" cy="63.1" r="3.2" fill="#fff" stroke="#7CD2D5" stroke-width="2"><title>r005 · 92.85</title></circle>
+<circle cx="197.3" cy="56.9" r="3.2" fill="#fff" stroke="#7CD2D5" stroke-width="2"><title>r006 · 93.3</title></circle>
+<circle cx="224.2" cy="54.2" r="3.2" fill="#fff" stroke="#7CD2D5" stroke-width="2"><title>r007 · 93.5</title></circle>
+<circle cx="251.1" cy="54.2" r="3.2" fill="#fff" stroke="#7CD2D5" stroke-width="2"><title>r008 · 93.5</title></circle>
+<circle cx="278.0" cy="46.7" r="3.2" fill="#fff" stroke="#7CD2D5" stroke-width="2"><title>r009 · 94.05</title></circle>
+<circle cx="304.9" cy="46.7" r="3.2" fill="#fff" stroke="#7CD2D5" stroke-width="2"><title>r010 · 94.05</title></circle>
+<circle cx="331.8" cy="43.9" r="3.2" fill="#fff" stroke="#7CD2D5" stroke-width="2"><title>r011 · 94.25</title></circle>
+<circle cx="358.7" cy="43.9" r="3.2" fill="#fff" stroke="#7CD2D5" stroke-width="2"><title>r012 · 94.25</title></circle>
+<circle cx="385.6" cy="43.9" r="3.2" fill="#fff" stroke="#7CD2D5" stroke-width="2"><title>r013 · 94.25</title></circle>
+<circle cx="412.4" cy="38.4" r="3.2" fill="#fff" stroke="#7CD2D5" stroke-width="2"><title>r014 · 94.65</title></circle>
+<circle cx="439.3" cy="35.7" r="3.2" fill="#fff" stroke="#7CD2D5" stroke-width="2"><title>r015 · 94.85</title></circle>
+<circle cx="466.2" cy="33.7" r="3.2" fill="#fff" stroke="#7CD2D5" stroke-width="2"><title>r016 · 95.0</title></circle>
+<circle cx="493.1" cy="33.7" r="3.2" fill="#fff" stroke="#7CD2D5" stroke-width="2"><title>r017 · 95.0</title></circle>
+<circle cx="520.0" cy="33.7" r="3.2" fill="#fff" stroke="#7CD2D5" stroke-width="2"><title>r018 · 95.0</title></circle>
+
+                <text x="36.0" y="200" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.45)" font-family="ui-monospace, Menlo, monospace">r000</text>
+<text x="197.33333333333334" y="200" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.45)" font-family="ui-monospace, Menlo, monospace">r006</text>
+<text x="358.6666666666667" y="200" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.45)" font-family="ui-monospace, Menlo, monospace">r012</text>
+<text x="520.0" y="200" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.45)" font-family="ui-monospace, Menlo, monospace">r018</text>
+
+              </svg>
+            </section>
+
+            <section class="pdd-card pdd-cells">
+              <h4>每轮类型 · 内容 vs 产品</h4>
+              <p class="pdd-sub">r000 baseline 灰 / 内容 9 轮青 / 产品化 9 轮紫</p>
+              <div class="pdd-cells-wrap">
+                <svg viewBox="0 0 528 24" role="img" aria-label="Round category heatmap" class="pdd-svg-cells">
+                  <g transform="translate(0,0)"><rect width="24" height="24" rx="3" fill="#444" opacity=".85"><title>r000 · baseline</title></rect><text x="12.0" y="15.5" text-anchor="middle" font-size="9" fill="#888" font-family="ui-monospace, Menlo, monospace" font-weight="600">0</text></g>
+<g transform="translate(28,0)"><rect width="24" height="24" rx="3" fill="#7CD2D5" opacity=".85"><title>r001 · improvement</title></rect><text x="12.0" y="15.5" text-anchor="middle" font-size="9" fill="#0e1117" font-family="ui-monospace, Menlo, monospace" font-weight="600">1</text></g>
+<g transform="translate(56,0)"><rect width="24" height="24" rx="3" fill="#7CD2D5" opacity=".85"><title>r002 · terminology_shift</title></rect><text x="12.0" y="15.5" text-anchor="middle" font-size="9" fill="#0e1117" font-family="ui-monospace, Menlo, monospace" font-weight="600">2</text></g>
+<g transform="translate(84,0)"><rect width="24" height="24" rx="3" fill="#7CD2D5" opacity=".85"><title>r003 · major_extension</title></rect><text x="12.0" y="15.5" text-anchor="middle" font-size="9" fill="#0e1117" font-family="ui-monospace, Menlo, monospace" font-weight="600">3</text></g>
+<g transform="translate(112,0)"><rect width="24" height="24" rx="3" fill="#7CD2D5" opacity=".85"><title>r004 · prose_polish</title></rect><text x="12.0" y="15.5" text-anchor="middle" font-size="9" fill="#0e1117" font-family="ui-monospace, Menlo, monospace" font-weight="600">4</text></g>
+<g transform="translate(140,0)"><rect width="24" height="24" rx="3" fill="#7CD2D5" opacity=".85"><title>r005 · tooling_correctness</title></rect><text x="12.0" y="15.5" text-anchor="middle" font-size="9" fill="#0e1117" font-family="ui-monospace, Menlo, monospace" font-weight="600">5</text></g>
+<g transform="translate(168,0)"><rect width="24" height="24" rx="3" fill="#7CD2D5" opacity=".85"><title>r006 · paradigm_audit</title></rect><text x="12.0" y="15.5" text-anchor="middle" font-size="9" fill="#0e1117" font-family="ui-monospace, Menlo, monospace" font-weight="600">6</text></g>
+<g transform="translate(196,0)"><rect width="24" height="24" rx="3" fill="#7CD2D5" opacity=".85"><title>r007 · consistency_audit</title></rect><text x="12.0" y="15.5" text-anchor="middle" font-size="9" fill="#0e1117" font-family="ui-monospace, Menlo, monospace" font-weight="600">7</text></g>
+<g transform="translate(224,0)"><rect width="24" height="24" rx="3" fill="#A744E2" opacity=".85"><title>r008 · web_landing_page</title></rect><text x="12.0" y="15.5" text-anchor="middle" font-size="9" fill="#fff" font-family="ui-monospace, Menlo, monospace" font-weight="600">8</text></g>
+<g transform="translate(252,0)"><rect width="24" height="24" rx="3" fill="#7CD2D5" opacity=".85"><title>r009 · model_rebrand</title></rect><text x="12.0" y="15.5" text-anchor="middle" font-size="9" fill="#0e1117" font-family="ui-monospace, Menlo, monospace" font-weight="600">9</text></g>
+<g transform="translate(280,0)"><rect width="24" height="24" rx="3" fill="#A744E2" opacity=".85"><title>r010 · web_split_reader</title></rect><text x="12.0" y="15.5" text-anchor="middle" font-size="9" fill="#fff" font-family="ui-monospace, Menlo, monospace" font-weight="600">10</text></g>
+<g transform="translate(308,0)"><rect width="24" height="24" rx="3" fill="#7CD2D5" opacity=".85"><title>r011 · literary_retain</title></rect><text x="12.0" y="15.5" text-anchor="middle" font-size="9" fill="#0e1117" font-family="ui-monospace, Menlo, monospace" font-weight="600">11</text></g>
+<g transform="translate(336,0)"><rect width="24" height="24" rx="3" fill="#A744E2" opacity=".85"><title>r012 · publish</title></rect><text x="12.0" y="15.5" text-anchor="middle" font-size="9" fill="#fff" font-family="ui-monospace, Menlo, monospace" font-weight="600">12</text></g>
+<g transform="translate(364,0)"><rect width="24" height="24" rx="3" fill="#A744E2" opacity=".85"><title>r013 · web_analytics</title></rect><text x="12.0" y="15.5" text-anchor="middle" font-size="9" fill="#fff" font-family="ui-monospace, Menlo, monospace" font-weight="600">13</text></g>
+<g transform="translate(392,0)"><rect width="24" height="24" rx="3" fill="#A744E2" opacity=".85"><title>r014 · web_full_reader</title></rect><text x="12.0" y="15.5" text-anchor="middle" font-size="9" fill="#fff" font-family="ui-monospace, Menlo, monospace" font-weight="600">14</text></g>
+<g transform="translate(420,0)"><rect width="24" height="24" rx="3" fill="#A744E2" opacity=".85"><title>r015 · web_doc_explorer</title></rect><text x="12.0" y="15.5" text-anchor="middle" font-size="9" fill="#fff" font-family="ui-monospace, Menlo, monospace" font-weight="600">15</text></g>
+<g transform="translate(448,0)"><rect width="24" height="24" rx="3" fill="#A744E2" opacity=".85"><title>r016 · web_bugfix</title></rect><text x="12.0" y="15.5" text-anchor="middle" font-size="9" fill="#fff" font-family="ui-monospace, Menlo, monospace" font-weight="600">16</text></g>
+<g transform="translate(476,0)"><rect width="24" height="24" rx="3" fill="#A744E2" opacity=".85"><title>r017 · section_reorder</title></rect><text x="12.0" y="15.5" text-anchor="middle" font-size="9" fill="#fff" font-family="ui-monospace, Menlo, monospace" font-weight="600">17</text></g>
+<g transform="translate(504,0)"><rect width="24" height="24" rx="3" fill="#A744E2" opacity=".85"><title>r018 · hero_cta_phase_d_refresh</title></rect><text x="12.0" y="15.5" text-anchor="middle" font-size="9" fill="#fff" font-family="ui-monospace, Menlo, monospace" font-weight="600">18</text></g>
+
+                </svg>
+              </div>
+              <div class="pdd-legend">
+                <span><i style="background:#444"></i>baseline · 1</span>
+                <span><i style="background:#7CD2D5"></i>内容 · 9</span>
+                <span><i style="background:#A744E2"></i>产品 · 9</span>
+              </div>
+            </section>
+          </div>
+
+          <div class="pdd-timeline">
+            <h4>分段时间轴</h4>
+            <ol>
+              <li><strong>r001-007</strong> · 内容补齐 + 三轴一致性审计 · 85.15 → 93.50 (<span class="pdd-delta">+8.35</span>)</li>
+              <li><strong>r008-010</strong> · web 落地页 + Vercel 部署 + split reader · 93.50 → 94.05 (<span class="pdd-delta">+0.55</span>)</li>
+              <li><strong>r011-013</strong> · 文学性 retain + 域名上线 · 94.05 → 94.25 (<span class="pdd-delta">+0.20</span>)</li>
+              <li><strong>r014-018</strong> · 全文 HTML + 文档浏览器 + 路径修复 + IA 调整 + Hero CTA · 94.25 → 95.00 (<span class="pdd-delta">+0.75</span>)</li>
+            </ol>
+          </div>
         </div>
       </div>
     </section>
