@@ -443,25 +443,193 @@
     }
     a.chapter:hover h3 { color: var(--rust); }
 
-    .reading {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-    .path-card {
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.34);
-      padding: 24px;
-    }
-    .path-card h3 { margin: 0 0 14px; font-size: 20px; }
-    .path-card ol,
-    .path-card ul { margin: 0; padding-left: 22px; }
-    .path-card li { margin: 10px 0; color: var(--ink-2); }
     code {
       font-family: var(--mono);
       font-size: .92em;
       color: var(--rust);
       overflow-wrap: anywhere;
+    }
+
+    /* ===== Document Explorer (2-pane) ===== */
+    .explorer {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      gap: 0;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.34);
+      min-height: 620px;
+      max-height: 78vh;
+      overflow: hidden;
+    }
+    .explorer-side {
+      border-right: 1px solid var(--line);
+      overflow-y: auto;
+      background: rgba(255,255,255,.42);
+      padding: 14px 0;
+    }
+    .explorer-side details {
+      border-bottom: 1px solid rgba(0,0,0,.06);
+    }
+    .explorer-side details:last-child { border-bottom: 0; }
+    .explorer-side summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 12px 18px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--rust);
+      user-select: none;
+    }
+    .explorer-side summary::-webkit-details-marker { display: none; }
+    .explorer-side summary::after {
+      content: "▸";
+      float: right;
+      transition: transform .2s ease;
+      color: var(--muted);
+    }
+    .explorer-side details[open] summary::after { transform: rotate(90deg); }
+    .explorer-side ul {
+      margin: 0 0 8px;
+      padding: 0;
+      list-style: none;
+    }
+    .explorer-side li {
+      margin: 0;
+    }
+    .explorer-side .doc-link {
+      display: block;
+      padding: 8px 18px 8px 26px;
+      font-size: 14px;
+      color: var(--ink-2);
+      text-decoration: none;
+      border-left: 3px solid transparent;
+      transition: background .12s ease, color .12s ease, border-color .12s ease;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .explorer-side .doc-link:hover {
+      background: rgba(167,68,40,.08);
+      color: var(--rust);
+    }
+    .explorer-side .doc-link.active {
+      background: rgba(167,68,40,.12);
+      color: var(--rust);
+      border-left-color: var(--rust);
+      font-weight: 600;
+    }
+    .explorer-main {
+      overflow-y: auto;
+      padding: 28px clamp(20px, 3vw, 36px);
+      background: rgba(255,255,255,.18);
+    }
+    .explorer-main .doc-meta {
+      margin: 0 0 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: .04em;
+    }
+    .explorer-main .doc-meta a {
+      color: var(--rust);
+      text-decoration: none;
+    }
+    .explorer-main .doc-meta a:hover { text-decoration: underline; }
+    #doc-viewer {
+      font-family: var(--serif);
+      font-size: 16px;
+      line-height: 1.85;
+      color: var(--ink-2);
+    }
+    #doc-viewer h1 {
+      margin: 0 0 18px;
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    #doc-viewer h2 {
+      margin: 28px 0 12px;
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    #doc-viewer h3 { margin: 22px 0 10px; font-size: 18px; font-weight: 600; }
+    #doc-viewer p { margin: 0 0 14px; }
+    #doc-viewer ul, #doc-viewer ol { margin: 0 0 14px; padding-left: 24px; }
+    #doc-viewer li { margin: 4px 0; }
+    #doc-viewer code {
+      background: rgba(167,68,40,.08);
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-size: .9em;
+    }
+    #doc-viewer pre {
+      background: var(--night);
+      color: #e8e3d8;
+      padding: 14px 16px;
+      border-radius: 4px;
+      overflow-x: auto;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    #doc-viewer pre code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+    }
+    #doc-viewer blockquote {
+      margin: 14px 0;
+      padding: 4px 16px;
+      border-left: 3px solid var(--rust);
+      color: var(--muted);
+      background: rgba(167,68,40,.04);
+    }
+    #doc-viewer table {
+      border-collapse: collapse;
+      margin: 14px 0;
+      font-size: 14px;
+      width: 100%;
+    }
+    #doc-viewer th, #doc-viewer td {
+      border: 1px solid var(--line);
+      padding: 6px 10px;
+      text-align: left;
+    }
+    #doc-viewer th { background: rgba(167,68,40,.08); }
+    #doc-viewer hr {
+      border: 0;
+      border-top: 1px solid var(--line);
+      margin: 22px 0;
+    }
+    #doc-viewer a { color: var(--rust); }
+    #doc-viewer .loading,
+    #doc-viewer .error {
+      padding: 40px 0;
+      text-align: center;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 13px;
+    }
+    #doc-viewer .error { color: var(--rust); }
+
+    .explorer-toggle {
+      display: none;
+      margin-bottom: 14px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.42);
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 13px;
+      cursor: pointer;
+      width: 100%;
+      text-align: left;
     }
 
     .footer {
@@ -474,8 +642,7 @@
     @media (max-width: 980px) {
       .hero-inner,
       .section-head,
-      .world-grid,
-      .reading { grid-template-columns: 1fr; }
+      .world-grid { grid-template-columns: 1fr; }
       .hero-side { border-left: 0; padding-left: 0; border-top: 1px solid var(--line-2); padding-top: 20px; }
       .process { grid-template-columns: repeat(2, 1fr); }
       .relics,
@@ -492,6 +659,30 @@
       .chapter .day { grid-column: 2; justify-self: start; }
       .nav { width: 100%; }
     }
+
+    @media (max-width: 768px) {
+      .explorer {
+        grid-template-columns: 1fr;
+        max-height: none;
+        min-height: 0;
+        border: 0;
+        background: transparent;
+      }
+      .explorer-toggle { display: block; }
+      .explorer-side {
+        border-right: 0;
+        border: 1px solid var(--line);
+        max-height: 50vh;
+        margin-bottom: 14px;
+        display: none;
+      }
+      .explorer.open .explorer-side { display: block; }
+      .explorer-main {
+        padding: 18px;
+        border: 1px solid var(--line);
+        background: rgba(255,255,255,.34);
+      }
+    }
   </style>
 </head>
 <body>
@@ -504,7 +695,7 @@
         <a href="#relics">文物</a>
         <a href="#characters">人物</a>
         <a href="#chapters">章节</a>
-        <a href="#read">阅读路径</a>
+        <a href="#read">档案浏览</a>
         <a href="chapters/ch01.html">在线阅读</a>
       </nav>
     </div>
@@ -739,39 +930,159 @@
     <section id="read">
       <div class="shell">
         <div class="section-head">
-          <p class="kicker">Reading path</p>
+          <p class="kicker">Document explorer</p>
           <div>
-            <h2>原文完整阅读路径。</h2>
-            <p class="intro">推荐先读正文，再读世界观和生成档案。所有链接都指向项目内原始文件，方便从落地页回到完整文本。</p>
+            <h2>所有生成档案，一个浏览器。</h2>
+            <p class="intro">左侧菜单按类别列出全部生成档案,右侧实时渲染 Markdown。涵盖大纲与设定、需求与质量、Phase D 全部 16 轮 CEO rounds(round-000 到 round-015)、状态机与全文。在线章节阅读器仍在 <a href="chapters/ch01.html">chapters/ch01.html</a>。</p>
           </div>
         </div>
-        <div class="reading">
-          <article class="path-card">
-            <h3>读者路径</h3>
-            <ol>
-              <li><strong>在线阅读（推荐）</strong>：从第一章开始 → <a href="chapters/ch01.html">chapters/ch01.html</a>（14 章 HTML 章节阅读器，行宽 700px / 字号 19px / 行高 1.95）</li>
-              <li>章节目录页：<a href="novel.html">web/novel.html</a></li>
-              <li>完整正文源文件（Markdown）：<a href="../novel.md">output/零点一元/novel.md</a></li>
-              <li>项目入口与一句话梗概：<a href="../README.md">output/零点一元/README.md</a></li>
-              <li>世界观：<a href="../worldbuilding.md">output/零点一元/worldbuilding.md</a></li>
-              <li>人物档案：<a href="../characters.md">output/零点一元/characters.md</a></li>
-              <li>分场大纲：<a href="../story-outline.md">output/零点一元/story-outline.md</a></li>
-            </ol>
-          </article>
-          <article class="path-card">
-            <h3>生成档案路径</h3>
-            <ul>
-              <li>需求访谈：<a href="../docs/discovery-interview.md">docs/discovery-interview.md</a></li>
-              <li>需求规格：<a href="../docs/requirements-spec.md">docs/requirements-spec.md</a></li>
-              <li>需求拆解：<a href="../docs/requirement-breakdown.md">docs/requirement-breakdown.md</a></li>
-              <li>质量评估：<a href="../quality-assessment.md">quality-assessment.md</a></li>
-              <li>Phase D 轮次：<a href="../ceo-rounds/round-000-baseline.md">round-000</a> → <a href="../ceo-rounds/round-007.md">round-007</a></li>
-              <li>当前状态：<a href="../pipeline-state.json">pipeline-state.json</a></li>
-            </ul>
+
+        <button class="explorer-toggle" id="explorer-toggle" aria-expanded="false" aria-controls="explorer-side">
+          📂 文档目录
+        </button>
+
+        <div class="explorer" id="explorer">
+          <nav class="explorer-side" id="explorer-side" aria-label="文档目录">
+            <details open>
+              <summary>大纲与设定</summary>
+              <ul>
+                <li><a class="doc-link" href="#" data-src="/README.md" data-title="README.md">README.md</a></li>
+                <li><a class="doc-link" href="#" data-src="/characters.md" data-title="characters.md">characters.md</a></li>
+                <li><a class="doc-link" href="#" data-src="/worldbuilding.md" data-title="worldbuilding.md">worldbuilding.md</a></li>
+                <li><a class="doc-link" href="#" data-src="/story-outline.md" data-title="story-outline.md">story-outline.md</a></li>
+                <li><a class="doc-link" href="#" data-src="/chapters-tbd.md" data-title="chapters-tbd.md">chapters-tbd.md</a></li>
+              </ul>
+            </details>
+            <details open>
+              <summary>需求与质量</summary>
+              <ul>
+                <li><a class="doc-link" href="#" data-src="/docs/discovery-interview.md" data-title="docs/discovery-interview.md">discovery-interview.md</a></li>
+                <li><a class="doc-link" href="#" data-src="/docs/requirements-spec.md" data-title="docs/requirements-spec.md">requirements-spec.md</a></li>
+                <li><a class="doc-link" href="#" data-src="/docs/requirement-breakdown.md" data-title="docs/requirement-breakdown.md">requirement-breakdown.md</a></li>
+                <li><a class="doc-link" href="#" data-src="/quality-assessment.md" data-title="quality-assessment.md">quality-assessment.md</a></li>
+              </ul>
+            </details>
+            <details open>
+              <summary>Phase D · CEO Rounds</summary>
+              <ul>
+                <li><a class="doc-link" href="#" data-src="/ceo-rounds/round-000-baseline.md" data-title="round-000-baseline.md">round-000 · baseline</a></li>
+                <li><a class="doc-link" href="#" data-src="/ceo-rounds/round-001.md" data-title="round-001.md">round-001 · 妻子戏新增</a></li>
+                <li><a class="doc-link" href="#" data-src="/ceo-rounds/round-002.md" data-title="round-002.md">round-002 · 术语 spec→skill</a></li>
+                <li><a class="doc-link" href="#" data-src="/ceo-rounds/round-003.md" data-title="round-003.md">round-003 · 全书扩写闭合</a></li>
+                <li><a class="doc-link" href="#" data-src="/ceo-rounds/round-004.md" data-title="round-004.md">round-004 · 章节抛光</a></li>
+                <li><a class="doc-link" href="#" data-src="/ceo-rounds/round-005.md" data-title="round-005.md">round-005 · Tooling 纠错</a></li>
+                <li><a class="doc-link" href="#" data-src="/ceo-rounds/round-006.md" data-title="round-006.md">round-006 · 范式审计</a></li>
+                <li><a class="doc-link" href="#" data-src="/ceo-rounds/round-007.md" data-title="round-007.md">round-007 · 一致性审计</a></li>
+                <li><a class="doc-link" href="#" data-src="/ceo-rounds/round-008.md" data-title="round-008.md">round-008 · web 落地页</a></li>
+                <li><a class="doc-link" href="#" data-src="/ceo-rounds/round-009.md" data-title="round-009.md">round-009 · DeepSeek V5 重锚</a></li>
+                <li><a class="doc-link" href="#" data-src="/ceo-rounds/round-010.md" data-title="round-010.md">round-010 · web split reader</a></li>
+                <li><a class="doc-link" href="#" data-src="/ceo-rounds/round-011.md" data-title="round-011.md">round-011 · Lyra 私名回填</a></li>
+                <li><a class="doc-link" href="#" data-src="/ceo-rounds/round-012.md" data-title="round-012.md">round-012 · 独立发布</a></li>
+                <li><a class="doc-link" href="#" data-src="/ceo-rounds/round-013.md" data-title="round-013.md">round-013 · Web Analytics</a></li>
+                <li><a class="doc-link" href="#" data-src="/ceo-rounds/round-014.md" data-title="round-014.md">round-014 · 全文阅读器</a></li>
+                <li><a class="doc-link" href="#" data-src="/ceo-rounds/round-015.md" data-title="round-015.md">round-015 · 双栏文档浏览器</a></li>
+              </ul>
+            </details>
+            <details>
+              <summary>状态与全文</summary>
+              <ul>
+                <li><a class="doc-link" href="#" data-src="/pipeline-state.json" data-title="pipeline-state.json" data-type="json">pipeline-state.json</a></li>
+                <li><a class="doc-link" href="#" data-src="/novel.md" data-title="novel.md">novel.md (全文 · 50K 字)</a></li>
+              </ul>
+            </details>
+          </nav>
+          <article class="explorer-main">
+            <p class="doc-meta" id="doc-meta">README.md · <a href="/README.md" target="_blank" rel="noopener">查看原文件</a></p>
+            <div id="doc-viewer"><p class="loading">正在加载…</p></div>
           </article>
         </div>
       </div>
     </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+    <script>
+      (function () {
+        var DEFAULT_SRC = '/README.md';
+        var DEFAULT_TITLE = 'README.md';
+        var viewer = document.getElementById('doc-viewer');
+        var meta = document.getElementById('doc-meta');
+        var sidebar = document.getElementById('explorer-side');
+        var toggle = document.getElementById('explorer-toggle');
+        var explorer = document.getElementById('explorer');
+        var links = sidebar.querySelectorAll('.doc-link');
+
+        if (window.marked && marked.setOptions) {
+          marked.setOptions({ breaks: false, gfm: true });
+        }
+
+        function escapeHtml(s) {
+          return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        }
+
+        function setActive(link) {
+          links.forEach(function (l) { l.classList.remove('active'); });
+          if (link) link.classList.add('active');
+        }
+
+        function updateMeta(title, src) {
+          meta.innerHTML = escapeHtml(title) + ' · <a href="' + src + '" target="_blank" rel="noopener">查看原文件</a>';
+        }
+
+        function loadDoc(src, title, isJson) {
+          viewer.innerHTML = '<p class="loading">正在加载 ' + escapeHtml(title) + ' …</p>';
+          updateMeta(title, src);
+          fetch(src, { cache: 'no-store' })
+            .then(function (r) {
+              if (!r.ok) throw new Error('HTTP ' + r.status);
+              return r.text();
+            })
+            .then(function (txt) {
+              if (isJson) {
+                var pretty;
+                try { pretty = JSON.stringify(JSON.parse(txt), null, 2); }
+                catch (e) { pretty = txt; }
+                viewer.innerHTML = '<pre><code>' + escapeHtml(pretty) + '</code></pre>';
+                return;
+              }
+              // strip leading frontmatter --- ... --- (round md files)
+              var clean = txt.replace(/^---\n[\s\S]*?\n---\n/, '');
+              var html = window.marked ? marked.parse(clean) : '<pre>' + escapeHtml(clean) + '</pre>';
+              viewer.innerHTML = html;
+              viewer.scrollTop = 0;
+              var main = viewer.parentElement;
+              if (main) main.scrollTop = 0;
+            })
+            .catch(function (e) {
+              viewer.innerHTML = '<p class="error">加载失败:' + escapeHtml(e.message || String(e)) + '<br>路径:<code>' + escapeHtml(src) + '</code></p>';
+            });
+        }
+
+        links.forEach(function (link) {
+          link.addEventListener('click', function (ev) {
+            ev.preventDefault();
+            var src = link.getAttribute('data-src');
+            var title = link.getAttribute('data-title') || src;
+            var isJson = link.getAttribute('data-type') === 'json';
+            setActive(link);
+            loadDoc(src, title, isJson);
+            if (window.matchMedia('(max-width: 768px)').matches) {
+              explorer.classList.remove('open');
+              toggle.setAttribute('aria-expanded', 'false');
+            }
+          });
+        });
+
+        toggle.addEventListener('click', function () {
+          var open = explorer.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+
+        // initial load: README.md, mark first link active
+        var firstLink = sidebar.querySelector('.doc-link[data-src="' + DEFAULT_SRC + '"]');
+        if (firstLink) setActive(firstLink);
+        loadDoc(DEFAULT_SRC, DEFAULT_TITLE, false);
+      })();
+    </script>
   </main>
 
   <footer class="footer">

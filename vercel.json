@@ -2,17 +2,17 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
+    { "source": "/", "destination": "/web/index" },
+    { "source": "/novel", "destination": "/web/novel" },
+    { "source": "/novel.html", "destination": "/web/novel" }
+  ],
+  "headers": [
     {
-      "source": "/",
-      "destination": "/web/index.html"
-    },
-    {
-      "source": "/novel",
-      "destination": "/web/novel.html"
-    },
-    {
-      "source": "/novel.html",
-      "destination": "/web/novel.html"
+      "source": "/(.*)\\.md",
+      "headers": [
+        { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=300" }
+      ]
     }
   ]
 }
