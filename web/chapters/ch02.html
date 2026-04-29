@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>第二章 · 最后一次代码评审 · 零点一元</title>
+  <meta name="description" content="《零点一元》第二章 · 最后一次代码评审 — 作者:刘仙升" />
+  <meta name="author" content="刘仙升" />
+  <meta property="og:title" content="第二章 · 最后一次代码评审 · 零点一元" />
+  <meta property="og:type" content="article" />
+  <meta property="og:author" content="https://x.com/LukeLiu95" />
+  <meta property="article:author" content="https://x.com/LukeLiu95" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23111316'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-size='18' fill='%23f6f1e8' font-family='serif'%3E零%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="../assets/reader.css" />
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+  <header class="reader-top">
+    <div class="reader-shell">
+      <a class="brand" href="../index.html">零点一元</a>
+      <span class="progress">第 2 / 14 章</span>
+    </div>
+  </header>
+
+  <nav class="reader-nav top" aria-label="章节导航(顶部)">
+    <div class="reader-shell">
+      <a class="nav-link" href="ch01.html" rel="prev">← 上一章</a>
+      <a class="nav-link" href="../index.html#chapters">目录</a>
+      <a class="nav-link" href="ch03.html" rel="next">下一章 →</a>
+    </div>
+  </nav>
+
+  <main class="reader-main">
+    <article class="chapter">
+      <h1 class="chapter-title">第二章 · 最后一次代码评审</h1>
+      <p>第二天一早,林行九点到公司,办公区只到了三分之一的人。</p>
+      <p>剩下三分之二的工位上,屏幕都没暗——这是公司一年前推行的&quot;agent 影子值班&quot;留下的副作用。每个工程师离开座位前,会启动一个本地的 LangGraph runtime,挂在自己工单池上做一线分诊。屏幕亮着是为了让 agent 的 dashboard 一直可见。</p>
+      <p>林行坐下,先打开 GitHub。一个待评审的 PR 顶在他列表最上,作者是实习生薛野,提交时间昨晚十一点四十六分——比林行在地铁口写下&quot;Day 0&quot;晚了三十八分钟。</p>
+      <p>PR 标题:<em>fix: webhook 重试在 5xx 时退避算法错位(off-by-one)</em>。</p>
+      <p>林行点进去。</p>
+      <p>变更只有十七行。薛野把退避序列从 <code>[1, 2, 4, 8, 16]</code> 改成 <code>[2, 4, 8, 16, 32]</code>,然后改了一个边界条件的判断。CI 全绿,单测加了三个 case,commit message 写得规整,签名末尾还有一句:&quot;林老师,如果方向不对,请直接 close,我重写。&quot;</p>
+      <p>林行准备开始 review,屏幕右下角弹出一个通知。</p>
+      <blockquote><p><strong>Claude Code</strong>(co-reviewer)有 47 条评论已发布。 平均响应时间:11s。Bounded Autonomy 模式:<strong>advisory</strong>(发布评论但不 approve / merge)。</p></blockquote>
+      <p>林行先没点。他先把 PR 自己看了一遍。</p>
+      <p>他花了八分钟,在心里写了三条意见:</p>
+      <ol>
+        <li>边界判断那行,薛野用了 <code>&gt;=</code>,他想改成 <code>&gt;</code>,因为更符合既有惯例。</li>
+        <li>退避序列改完之后,worst-case 总等待时间变长了 60 秒,需要在文档里更新 SLA 注释。</li>
+        <li>单测里第三个 case 用的 mock,跟另一个测试文件的 mock 重复了,可以提到 fixtures。</li>
+      </ol>
+      <p>写完,他抬手要敲键盘。然后他停了下来。</p>
+      <p>他点开了 Claude Code 的评论。</p>
+      <p>Claude Code 一共 47 条。林行往下滚:</p>
+      <ul>
+        <li>边界判断那行,Claude Code 提到了 <code>&gt;</code> vs <code>&gt;=</code>,跟他想的一样。</li>
+        <li>退避序列总等待时间问题,Claude Code 算到了秒,且 cross-reference 了三个月前另一个 PR 里改过的 SLA 注释——林行已经忘了那个 PR。</li>
+        <li>单测 mock 重复,Claude Code 不仅指出了,还在评论里贴了 fixtures 的 import 路径。</li>
+        <li>然后是林行没想到的 44 条:webhook 在网络分区时的重入风险、退避算法在客户使用 Stripe 老 API 时的兼容性、对接日本某 SaaS 客户的 timezone 边界问题、合规上 GDPR 对最大 retry 间隔的隐含限制、单测覆盖率从 87.3% 提升到 88.1% 但缺少一类灰度路径……</li>
+      </ul>
+      <p>第 47 条是 Claude Code 自己加的:&quot;Bounded Autonomy 模式提醒:此 PR 涉及客户侧重试逻辑,根据公司 Q2 设定的升级规则,需要至少 1 名人类工程师签字。请 @林行 在评论后于 PR 上方 &#39;Approve&#39; 通道完成最终决策。审计 ID: br-2026-04-29-0007。&quot;</p>
+      <p>林行看完。</p>
+      <p>他在心里默念了一遍那 44 条他没想到的。其中有 11 条,是他本来一定能想到的——只是会在十年内某次出 bug 之后想到。Claude Code 在 11 秒内一次性想到。</p>
+      <p>剩下的 33 条,是他<strong>想不到的</strong>。</p>
+      <p>不是因为他笨。是因为那些点需要同时持有三个跨文件的上下文、两条历史 PR、一份合规附件、一个客户的 timezone 表。一个人脑同时持有这些信息会爆。Claude Code 不会爆。</p>
+      <p>他把鼠标从键盘上挪开,放到桌面上。手心有汗。</p>
+      <p>他想起昨晚 last-real-code.md 那个文件。他原本以为那是某种纪念。现在他知道那不是纪念。那是一个时代的证物——证明在 0.1 元出现之前,确实有过一种叫&quot;工程师把代码当作品提交给另一个工程师&quot;的行为方式。</p>
+      <p>他还是要写 review。他给自己定了规矩:不抄 Claude Code 的话。</p>
+      <p>他打开评论框,写了三句:</p>
+      <blockquote><p>薛野,  退避序列改得对。Claude Code 已经把技术点说完了,我不重复。  我只补一句:你这个 PR 是这个仓库里第 14,732 个 PR。我可能是最后一个亲手 review 你 PR 的人。所以——这次写得很干净,谢谢。  ——林行</p></blockquote>
+      <p>他点击 Approve,然后点击 Merge。</p>
+      <p>页面刷新。绿色的 <em>Merged</em> 标签亮起。Claude Code 在下方留了一条短评论:</p>
+      <blockquote><p>已记录至 ledger:audit-id br-2026-04-29-0007。本次决策由 1 名人类工程师签字,合规通过。 <em>备注(Claude Code 自添加,非任务要求):祝薛野下一份代码也能被人看见。</em></p></blockquote>
+      <p>林行盯着最后那行看了很久。</p>
+      <p>他不确定 Claude Code 是怎么学会写&quot;祝……被人看见&quot;这种话的。可能是从过去三十年所有 GitHub PR 评论里学的。可能是它的训练数据里有几本中文小说。可能是它没&quot;学&quot;,只是统计上,在这种语境下,这是最高概率的下一句。</p>
+      <p>他不知道,也不想知道。</p>
+      <p>他从工位上站起来,去茶水间。</p>
+      <p>茶水间没人。他打开热水龙头接水,水声很大。他在水声里小声说了一句:&quot;谢谢。&quot;</p>
+      <p>他不知道是说给薛野,还是说给 Claude Code,还是说给那个再也不会被自己手敲一遍的退避序列。</p>
+      <p>回到工位的时候,他的 dashboard 弹出第二条通知:</p>
+      <blockquote><p><strong>GroupChat 摘要</strong>(过去 60 分钟) 队列:webhook-team 处理工单数:34 / 关闭:31 / 升级到人:3 升级中 1 条已分配给:<strong>林行</strong>(优先级 P2) 处理人 ETA:Claude Code 估计 8 分钟内,人类工程师估计 47 分钟。</p></blockquote>
+      <p>林行看着那个&quot;47 分钟&quot;。</p>
+      <p>他想,明天他会比 Claude Code 慢得更多。后天会更慢。一个月后,他不会再被分配工单了。</p>
+      <p>他把那条通知关掉,打开 last-real-code.md。</p>
+      <p>他在文件末尾加了一行:</p>
+      <blockquote><p>Day 1。Claude Code 写了 47 条评论。我写了 3 句话。我点了 Approve。 我不知道这算我赢了,还是输了。但我知道—— 这是我职业生涯里最后一次,有个人把代码当作品交给我。</p></blockquote>
+      <p>他保存,关闭。</p>
+      <p>时间是上午十点二十二分。</p>
+      <p>办公区第三排某个屏幕上,一行 LangGraph 的日志缓缓滚过:</p>
+      <pre><code>[graph] node:triage-agent  done  cost:¥0.00031  tokens:3127  latency:412ms</code></pre>
+      <p>三毛一厘人民币。一次完整的工单分诊。</p>
+      <p>林行听不到那行日志的声音。但他后来回想起来,觉得那一刻整个办公区像是在不停地下小雨—— 每一个屏幕都在用自己的频率,落自己的雨。</p>
+      <p>只有那些没人坐的工位例外——那些工位上,雨下得最大。</p>
+      <p>(第二章 · 完)</p>
+      <hr />
+    </article>
+  </main>
+
+  <nav class="reader-nav bottom" aria-label="章节导航(底部)">
+    <div class="reader-shell">
+      <a class="nav-link" href="ch01.html" rel="prev">← 上一章</a>
+      <a class="nav-link" href="../index.html#chapters">目录</a>
+      <a class="nav-link" href="ch03.html" rel="next">下一章 →</a>
+    </div>
+    <div class="reader-shell progress-line">
+      第 2 / 14 章
+    </div>
+  </nav>
+
+  <footer class="reader-footer">
+    <div class="reader-shell">
+      <p>《零点一元》 · 作者:<a href="https://x.com/LukeLiu95" rel="noopener">刘仙升 @LukeLiu95</a></p>
+      <p class="muted">本页由 <code>web/build-chapters.js</code> 从 <code>novel.md</code> 自动生成。</p>
+    </div>
+  </footer>
+</body>
+</html>

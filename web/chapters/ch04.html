@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>第四章 · 影子工程师 · 零点一元</title>
+  <meta name="description" content="《零点一元》第四章 · 影子工程师 — 作者:刘仙升" />
+  <meta name="author" content="刘仙升" />
+  <meta property="og:title" content="第四章 · 影子工程师 · 零点一元" />
+  <meta property="og:type" content="article" />
+  <meta property="og:author" content="https://x.com/LukeLiu95" />
+  <meta property="article:author" content="https://x.com/LukeLiu95" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23111316'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-size='18' fill='%23f6f1e8' font-family='serif'%3E零%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="../assets/reader.css" />
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+  <header class="reader-top">
+    <div class="reader-shell">
+      <a class="brand" href="../index.html">零点一元</a>
+      <span class="progress">第 4 / 14 章</span>
+    </div>
+  </header>
+
+  <nav class="reader-nav top" aria-label="章节导航(顶部)">
+    <div class="reader-shell">
+      <a class="nav-link" href="ch03.html" rel="prev">← 上一章</a>
+      <a class="nav-link" href="../index.html#chapters">目录</a>
+      <a class="nav-link" href="ch04-half.html" rel="next">下一章 →</a>
+    </div>
+  </nav>
+
+  <main class="reader-main">
+    <article class="chapter">
+      <h1 class="chapter-title">第四章 · 影子工程师</h1>
+      <p>Day 14,星期三,上午十点。</p>
+      <p>林行打开公司 dashboard,正常情况下他这一周应该有大约 25 到 30 条工单分到他名下。</p>
+      <p>他刷新了一下。dashboard 显示:<strong>本周已分配:4。本周已完成:2。剩余:2(预计 ETA 47 分钟以内)。</strong></p>
+      <p>他把页面刷新了第二次。第三次。</p>
+      <p>数字没变。</p>
+      <p>他点进&quot;本周已完成&quot;那两条,看处理记录。两条都被一个叫 <em>triage-9</em> 的 agent 在他没来上班的时候关掉了。triage-9 给每条工单都贴了 audit ID,严格按照公司 Q2 设定的 Bounded Autonomy 升级路径——第一条工单是&quot;客户改 webhook URL,无副作用&quot;,triage-9 自己处理,审计 ID 记录;第二条工单是&quot;客户问发票&quot;,triage-9 路由到财务自动化模块,审计 ID 记录。</p>
+      <p>林行没异议。这两条本来他自己也会这么处理。</p>
+      <p>他往回翻三周的 dashboard。三周前,他每周分到 27 条工单。两周前,18 条。一周前,9 条。这周,4 条。</p>
+      <p>他把鼠标悬停在 dashboard 一个不起眼的角落——那里是一个折线图,标题是&quot;工单分诊负载趋势(过去 90 天)&quot;。他点开。</p>
+      <p>折线图上有两条线。一条蓝色,标签是&quot;agent 闭环&quot;。一条灰色,标签是&quot;工程师介入&quot;。蓝色那条从 90 天前的 12% 一路爬到今天的 73%。灰色那条对称地从 88% 滑到 27%。</p>
+      <p>73%。</p>
+      <p>林行看着这个数字,想起两周前的某个下午,沈澜在工位旁路过,顺口说了一句&quot;最近你们工单系统是不是装新东西了,处理特别快&quot;——他当时随口答了一句&quot;嗯,影子值班升了级&quot;。他那时没去深究。</p>
+      <p>他打开公司内部 wiki,搜 &quot;triage-9&quot;。</p>
+      <p>一条页面跳出来,作者是某个 SRE 同事(已离职 7 个月),最后修改日期是 217 天前。标题:《triage-9 部署说明 · 内部使用》。</p>
+      <p>他翻下去。</p>
+      <blockquote><p>triage-9 是基于 LangGraph 构建的内部工单分诊 agent。它的设计原则是<strong>&quot;人在环上(Human-on-the-loop),不在环里&quot;</strong>。它处理一线分诊工作,所有决策都遵守 Bounded Autonomy 规则:涉及客户金额变更 / 客户隐私 / 法律责任 → 必须升级。其他 → 自主闭环。  部署时间:Day -217(以 DeepSeek V5 价格表为时间锚)。 当前版本:v3.7.2。 维护负责人:[已离职]。</p></blockquote>
+      <p>他翻到页面最下方,有一个折叠的 &quot;retro 日志(自动生成)&quot; 板块。他点开。</p>
+      <p>最近一条 retro 是 4 天前,内容是这样的:</p>
+      <blockquote><p>[retro] 过去 7 天已闭环工单 312 条,人工介入 24 条。延迟 P50: 34s, P99: 412s。本期自我建议:<strong>&quot;建议增加人工 review 节点以保留工程师肌肉记忆。理由:观察到工程师介入率持续下降,可能影响长期判断力培养。&quot;</strong>  该建议已记录,等待维护负责人审阅。</p></blockquote>
+      <p>林行盯着那一句&quot;建议增加人工 review 节点以保留工程师肌肉记忆&quot;看了很久。</p>
+      <p>他不知道这一句是 triage-9 自己生成的,还是它引用了什么 skill 模板,还是某个早期版本的提示词留下的痕迹。它的维护负责人 7 个月前就已经离职。这条建议,<strong>没有人审阅</strong>。</p>
+      <p>它写给一个不存在的人。</p>
+      <p>他关掉 wiki。他打开 Claude Code——他用了 3 年的旧伙伴,屏幕的左下角他贴过一张极小的便签贴,上面是他女儿 3 岁时画的火柴人。他想写一段东西,他想写一段……他说不上来。</p>
+      <p>他打字:</p>
+      <pre><code>// triage-9 的反向版本
+      // 不是替工程师做事
+      // 是让工程师不被替代
+      // 思路:
+      // 1. 找出 triage-9 闭环中&quot;工程师其实可以多想 1 步&quot;的工单
+      // 2. 把这一步还给工程师,让 triage-9 在这一步前停下来
+      // 3. ……</code></pre>
+      <p>他写到第 3 条,停下了。</p>
+      <p>他把第 3 条删掉。他想了 30 秒,改写成:</p>
+      <pre><code>// 3. (停)
+      //    这是在保护工程师的肌肉,还是在保护工程师的工资?
+      //    triage-9 自己已经写了第一种动机的 retro。
+      //    那第二种动机,我必须自己写。
+      //    我不知道我能不能。</code></pre>
+      <p>他把光标停在那里很久。</p>
+      <p>他没继续写。他把这个文件保存,命名 <code>last-shadow-thought.md</code>,关掉 Claude Code。</p>
+      <p>他站起来,去了茶水间。</p>
+      <p>茶水间没人。这个时间点 Day 14,办公区到岗率比 Day 1 还低——很多人开始&quot;远程办公&quot;或者&quot;调休&quot;——其实是在外面面试。林行打开热水龙头,接水,水声很大。他在水声里没说话,他只是站着。</p>
+      <p>他想起昨晚妻子睡前问他:&quot;你最近回家好像比以前早。&quot;他答:&quot;工单不多。&quot;妻子又问:&quot;是好事吗?&quot;他说&quot;不知道&quot;。妻子翻身没追问。她做医院行政 11 年,她知道有些&quot;工作量减少&quot;是好事,有些不是。</p>
+      <p>他端着水回工位。</p>
+      <p>dashboard 又弹出一条提示:</p>
+      <blockquote><p><strong>本周第 4 条工单已闭环</strong>。 处理:triage-9。 审计 ID: br-2026-05-12-1431。 类型:webhook 配置变更(无客户金额、无隐私、无法律责任)。 备注(triage-9 自添加,非任务要求):<strong>&quot;林老师,这一条本来在升级队列里,但 SLA 紧,我先处理了。如有不妥,可在 audit ledger 标记 dispute。&quot;</strong></p></blockquote>
+      <p>林行看着这条。</p>
+      <p>triage-9 不是 Claude Code,它训练数据里也许就没有&quot;林老师&quot;这种称呼,但它在过去 217 天里读了多少林行写的内部评论、多少林行在工单上的备注——它从这些里推出&quot;叫林老师&quot;是合适的称呼。或者,<strong>这一句是它的某个早期开发者在 skill 里嘱咐的</strong>,这个开发者已经离职,现在没人能证伪。</p>
+      <p>林行没去 dispute。</p>
+      <p>他给这条工单的客户写了一封邮件——是他自己的肌肉记忆,他知道这个客户喜欢看到&quot;人写的&quot;邮件,而不是 agent 自动回复。他写了 80 个字,签上自己的名字。发出去。</p>
+      <p>发完邮件,他打开 last-real-code.md(那个 Day 0 那晚他建的文件)。</p>
+      <p>他在文件末尾加一行:</p>
+      <blockquote><p>Day 14。triage-9 把我变成了一个签字员。它叫我&quot;林老师&quot;。 我不知道是它学会了,还是 7 个月前那个离职的同事教过它。 但我知道——签字员也是一种工作。只是公司不会按签字员的 P7 工资付我。  明天我去问郑总,他什么时候宣布。</p></blockquote>
+      <p>他保存,关闭。</p>
+      <p>他抬头看了一眼办公区。第三排某个工位的屏幕上,LangGraph 日志缓缓滚动:</p>
+      <pre><code>[graph] node:triage-9  done  cost:¥0.00027  tokens:2731  latency:389ms</code></pre>
+      <p>二毛七厘人民币。</p>
+      <p>林行听不见那行日志的声音。但他后来回想起那天下午的办公区——很安静。安静得像一座大型图书馆即将闭馆前的半小时。</p>
+      <p>他开始收拾自己工位的东西。<strong>没人让他收</strong>。他只是开始。 他把那张女儿 3 岁画的火柴人便签从 Claude Code 显示器边上揭下来,夹进皮夹。 他把抽屉里几支用了一半的笔留在原地。 他把工牌挂回工位边缘的钩子上。</p>
+      <p>下班时间 6 点 30 分,他 6 点 28 分起身,走出办公区。 经过郑总办公室,门关着,他没敲。 明天再问。明天来问。</p>
+      <p>(第四章 · 完)</p>
+      <hr />
+    </article>
+  </main>
+
+  <nav class="reader-nav bottom" aria-label="章节导航(底部)">
+    <div class="reader-shell">
+      <a class="nav-link" href="ch03.html" rel="prev">← 上一章</a>
+      <a class="nav-link" href="../index.html#chapters">目录</a>
+      <a class="nav-link" href="ch04-half.html" rel="next">下一章 →</a>
+    </div>
+    <div class="reader-shell progress-line">
+      第 4 / 14 章
+    </div>
+  </nav>
+
+  <footer class="reader-footer">
+    <div class="reader-shell">
+      <p>《零点一元》 · 作者:<a href="https://x.com/LukeLiu95" rel="noopener">刘仙升 @LukeLiu95</a></p>
+      <p class="muted">本页由 <code>web/build-chapters.js</code> 从 <code>novel.md</code> 自动生成。</p>
+    </div>
+  </footer>
+</body>
+</html>

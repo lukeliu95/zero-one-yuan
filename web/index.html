@@ -4,7 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>零点一元 · 小说生成过程页</title>
-  <meta name="description" content="《零点一元》小说生成过程、世界观、人物、文物与原文完整阅读路径。" />
+  <meta name="description" content="《零点一元》小说生成过程、世界观、人物、文物与原文完整阅读路径。作者:刘仙升 (@LukeLiu95)。" />
+  <meta name="author" content="刘仙升" />
+  <meta property="og:title" content="零点一元 · 长篇小说" />
+  <meta property="og:type" content="book" />
+  <meta property="og:author" content="https://x.com/LukeLiu95" />
+  <meta property="article:author" content="https://x.com/LukeLiu95" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23111316'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-size='18' fill='%23f6f1e8' font-family='serif'%3E零%3C/text%3E%3C/svg%3E" />
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -192,6 +197,17 @@
       font-family: var(--sans);
       font-weight: 600;
     }
+    .byline {
+      margin: 22px 0 0;
+      padding-top: 16px;
+      border-top: 1px solid var(--line-2);
+      color: rgba(255,255,255,.78);
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: .04em;
+    }
+    .byline a { color: #88d0d2; }
+    .byline a:hover { color: #fff; }
 
     section { padding: clamp(48px, 8vw, 92px) 0; border-top: 1px solid var(--line); }
     .section-head {
@@ -417,6 +433,15 @@
       font-size: 13px;
       white-space: nowrap;
     }
+    a.chapter {
+      text-decoration: none;
+      color: inherit;
+      transition: background .15s ease;
+    }
+    a.chapter:hover {
+      background: rgba(167,68,40,.06);
+    }
+    a.chapter:hover h3 { color: var(--rust); }
 
     .reading {
       display: grid;
@@ -480,7 +505,7 @@
         <a href="#characters">人物</a>
         <a href="#chapters">章节</a>
         <a href="#read">阅读路径</a>
-        <a href="novel.html">小说主体</a>
+        <a href="chapters/ch01.html">在线阅读</a>
       </nav>
     </div>
   </header>
@@ -501,6 +526,7 @@
             <span><b>181</b>天时间线</span>
             <span><b>94.05</b>最终评分</span>
           </div>
+          <p class="byline">作者 · <a href="https://x.com/LukeLiu95" rel="noopener">刘仙升 @LukeLiu95</a></p>
         </aside>
       </div>
     </section>
@@ -692,20 +718,20 @@
           </div>
         </div>
         <div class="chapters">
-          <article class="chapter"><div class="num">Ch 01</div><div><h3>价格表</h3><p>Slack 八分钟零回复，会议第十一分钟陷入沉默。</p></div><div class="day">Day 0</div></article>
-          <article class="chapter"><div class="num">Ch 02</div><div><h3>最后一次代码评审</h3><p>Claude Code 写了 47 条，林行写到一半把手挪开。</p></div><div class="day">Day 1</div></article>
-          <article class="chapter"><div class="num">Ch 03</div><div><h3>19 岁的姜禾</h3><p>她不会写代码，但她会写约束。</p></div><div class="day">Day 5</div></article>
-          <article class="chapter"><div class="num">Ch 04</div><div><h3>影子工程师</h3><p>73% 工单被 triage-9 自动闭环，工程师变成签字员。</p></div><div class="day">Day 14</div></article>
-          <article class="chapter"><div class="num">Ch 4.5</div><div><h3>周末</h3><p>妻子沈知微第一次直接出场，说出“水位线”。</p></div><div class="day">Day 17</div></article>
-          <article class="chapter"><div class="num">Ch 05</div><div><h3>裁员邮件</h3><p>“我们没输给 AI，我们输给了 0.1 元。”</p></div><div class="day">Day 21</div></article>
-          <article class="chapter"><div class="num">Ch 06</div><div><h3>skill 学校</h3><p>下岗培训变成 Bounded Autonomy 入门。</p></div><div class="day">Day 35</div></article>
-          <article class="chapter"><div class="num">Ch 07</div><div><h3>创始人陆衡</h3><p>他在殡仪馆里重新想起数据护城河。</p></div><div class="day">Day 45</div></article>
-          <article class="chapter"><div class="num">Ch 08</div><div><h3>软件葬礼</h3><p>Manus 朗读 README，archived 仓库数投影在墙上。</p></div><div class="day">Day 70</div></article>
-          <article class="chapter"><div class="num">Ch 09</div><div><h3>范式之争</h3><p>数据、审美、愿意慢的能力，三种答案第一次同桌。</p></div><div class="day">Day 90</div></article>
-          <article class="chapter"><div class="num">Ch 10</div><div><h3>一个人公司</h3><p>14 个 agent 在另一个房间工作，姜禾自己打了那个电话。</p></div><div class="day">Day 110</div></article>
-          <article class="chapter"><div class="num">Ch 11</div><div><h3>林行的转身</h3><p>他没离开软件行业，只是不再做 agent 替他做的部分。</p></div><div class="day">Day 130</div></article>
-          <article class="chapter"><div class="num">Ch 12</div><div><h3>陆衡的反扑</h3><p>衡安 ARR 5000 万，垂直行业的真实数字不是平均数。</p></div><div class="day">Day 150</div></article>
-          <article class="chapter"><div class="num">Ch 13</div><div><h3>第 181 天</h3><p>代码会被记住吗？会的，被它配得上的人记住。</p></div><div class="day">Day 175-181</div></article>
+          <a class="chapter" href="chapters/ch01.html"><div class="num">Ch 01</div><div><h3>价格表</h3><p>Slack 八分钟零回复，会议第十一分钟陷入沉默。</p></div><div class="day">Day 0</div></a>
+          <a class="chapter" href="chapters/ch02.html"><div class="num">Ch 02</div><div><h3>最后一次代码评审</h3><p>Claude Code 写了 47 条，林行写到一半把手挪开。</p></div><div class="day">Day 1</div></a>
+          <a class="chapter" href="chapters/ch03.html"><div class="num">Ch 03</div><div><h3>19 岁的姜禾</h3><p>她不会写代码，但她会写约束。</p></div><div class="day">Day 5</div></a>
+          <a class="chapter" href="chapters/ch04.html"><div class="num">Ch 04</div><div><h3>影子工程师</h3><p>73% 工单被 triage-9 自动闭环，工程师变成签字员。</p></div><div class="day">Day 14</div></a>
+          <a class="chapter" href="chapters/ch04-half.html"><div class="num">Ch 4.5</div><div><h3>周末</h3><p>妻子沈知微第一次直接出场，说出“水位线”。</p></div><div class="day">Day 17</div></a>
+          <a class="chapter" href="chapters/ch05.html"><div class="num">Ch 05</div><div><h3>裁员邮件</h3><p>“我们没输给 AI，我们输给了 0.1 元。”</p></div><div class="day">Day 21</div></a>
+          <a class="chapter" href="chapters/ch06.html"><div class="num">Ch 06</div><div><h3>skill 学校</h3><p>下岗培训变成 Bounded Autonomy 入门。</p></div><div class="day">Day 35</div></a>
+          <a class="chapter" href="chapters/ch07.html"><div class="num">Ch 07</div><div><h3>创始人陆衡</h3><p>他在殡仪馆里重新想起数据护城河。</p></div><div class="day">Day 45</div></a>
+          <a class="chapter" href="chapters/ch08.html"><div class="num">Ch 08</div><div><h3>软件葬礼</h3><p>Manus 朗读 README，archived 仓库数投影在墙上。</p></div><div class="day">Day 70</div></a>
+          <a class="chapter" href="chapters/ch09.html"><div class="num">Ch 09</div><div><h3>范式之争</h3><p>数据、审美、愿意慢的能力，三种答案第一次同桌。</p></div><div class="day">Day 90</div></a>
+          <a class="chapter" href="chapters/ch10.html"><div class="num">Ch 10</div><div><h3>一个人公司</h3><p>14 个 agent 在另一个房间工作，姜禾自己打了那个电话。</p></div><div class="day">Day 110</div></a>
+          <a class="chapter" href="chapters/ch11.html"><div class="num">Ch 11</div><div><h3>林行的转身</h3><p>他没离开软件行业，只是不再做 agent 替他做的部分。</p></div><div class="day">Day 130</div></a>
+          <a class="chapter" href="chapters/ch12.html"><div class="num">Ch 12</div><div><h3>陆衡的反扑</h3><p>衡安 ARR 5000 万，垂直行业的真实数字不是平均数。</p></div><div class="day">Day 150</div></a>
+          <a class="chapter" href="chapters/ch13.html"><div class="num">Ch 13</div><div><h3>第 181 天</h3><p>代码会被记住吗？会的，被它配得上的人记住。</p></div><div class="day">Day 175-181</div></a>
         </div>
       </div>
     </section>
@@ -723,8 +749,9 @@
           <article class="path-card">
             <h3>读者路径</h3>
             <ol>
-              <li>小说主体页面：<a href="novel.html">output/零点一元/web/novel.html</a></li>
-              <li>完整正文源文件：<a href="../novel.md">output/零点一元/novel.md</a></li>
+              <li><strong>在线阅读（推荐）</strong>：从第一章开始 → <a href="chapters/ch01.html">chapters/ch01.html</a>（14 章 HTML 章节阅读器，行宽 700px / 字号 19px / 行高 1.95）</li>
+              <li>章节目录页：<a href="novel.html">web/novel.html</a></li>
+              <li>完整正文源文件（Markdown）：<a href="../novel.md">output/零点一元/novel.md</a></li>
               <li>项目入口与一句话梗概：<a href="../README.md">output/零点一元/README.md</a></li>
               <li>世界观：<a href="../worldbuilding.md">output/零点一元/worldbuilding.md</a></li>
               <li>人物档案：<a href="../characters.md">output/零点一元/characters.md</a></li>
@@ -748,7 +775,7 @@
   </main>
 
   <footer class="footer">
-    <div class="shell">GEI product update · static landing page generated from <code>output/零点一元</code> project documents.</div>
+    <div class="shell"><p style="margin:0 0 8px;">作者 · <a href="https://x.com/LukeLiu95" rel="noopener">刘仙升 @LukeLiu95</a></p><p style="margin:0;">GEI product update · static landing page generated from <code>output/零点一元</code> project documents.</p></div>
   </footer>
 </body>
 </html>

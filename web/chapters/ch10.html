@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>第十章 · 一个人公司 · 零点一元</title>
+  <meta name="description" content="《零点一元》第十章 · 一个人公司 — 作者:刘仙升" />
+  <meta name="author" content="刘仙升" />
+  <meta property="og:title" content="第十章 · 一个人公司 · 零点一元" />
+  <meta property="og:type" content="article" />
+  <meta property="og:author" content="https://x.com/LukeLiu95" />
+  <meta property="article:author" content="https://x.com/LukeLiu95" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23111316'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-size='18' fill='%23f6f1e8' font-family='serif'%3E零%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="../assets/reader.css" />
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+  <header class="reader-top">
+    <div class="reader-shell">
+      <a class="brand" href="../index.html">零点一元</a>
+      <span class="progress">第 11 / 14 章</span>
+    </div>
+  </header>
+
+  <nav class="reader-nav top" aria-label="章节导航(顶部)">
+    <div class="reader-shell">
+      <a class="nav-link" href="ch09.html" rel="prev">← 上一章</a>
+      <a class="nav-link" href="../index.html#chapters">目录</a>
+      <a class="nav-link" href="ch11.html" rel="next">下一章 →</a>
+    </div>
+  </nav>
+
+  <main class="reader-main">
+    <article class="chapter">
+      <h1 class="chapter-title">第十章 · 一个人公司</h1>
+      <p>Day 110。星期日。傍晚六点。上海徐汇。</p>
+      <p>姜禾的出租屋在一栋老式法租界公寓的三楼,木地板,挑高三米四,窗外是一棵巨大的法国梧桐。屋里只有四样东西算&quot;家具&quot;:那张红木桌、一架蕉叶式古琴、一张床、一台 14 寸 MacBook。其余地面铺着藤席,藤席上散着她父亲送她的那本《古琴丛谈》、一本《文心雕龙》和半本《资治通鉴》——后者被她翻到第 47 页就停下了,六个月没动。</p>
+      <p>木地板是 1936 年法租界公寓原装的柚木,踩上去会&quot;嘎&quot;一声轻响——每一块板都有自己的节拍,姜禾搬进来住了八个月,她已经能听音辨位:厨房门口那块响在中部 C 调,卧室门口那块响在低八度,红木桌旁边那块完全不响——那是她六个月前自己拿一根小钉子敲进去的,她不喜欢那个位置发声。窗外法国梧桐的叶子已经长到夏天的厚度,叶面下垂的角度比一周前陡了三度——上海的夏天即将开始,叶子开始储水。傍晚六点这条弄堂里有一种特殊的复合声音:楼下王阿婆在炒菜的油烟机声、对门法国邻居放的旧爵士、远处衡复路某家咖啡馆周末爵士乐手调音的小号长音。这三种声音叠在一起,<strong>没有任何一种压过另一种</strong>——这是这一片老法租界三十年磨出来的一种集体音量克制。姜禾每周日傍晚把窗户半开,就是为了让这三层声音漂进她的 retro 时间。</p>
+      <p>她公司今天的付费用户是 12 万 4 千 7 百零三人。她每天工作四小时。其余时间她练琴、读书、做饭、给父亲打电话、不回 90% 的微信。她的公司&quot;组织架构图&quot;是一份 GroupChat 配置文件——14 个 agent,每个有自己的人设、memory namespace、retro 节奏。她管这 14 个叫&quot;我的同事&quot;。</p>
+      <p>周日傍晚是她固定的 retro 时间。</p>
+      <p>她坐在红木桌前,把 MacBook 打开。GroupChat 控制面板加载完,14 个 agent 的过去七天日志一行一行往上滚——产品、设计、前端、后端、QA、法务、客服、运营、数据、文案、无障碍、投放、伦理、客服-小苓(她在客服上拆了一个独立 agent 专门处理&quot;老人重复问&quot;场景)。</p>
+      <p>她从第 1 个开始,给每个 agent 写 1-2 句反馈。</p>
+      <p>写到第 7 个,客服-小苓,她停下了。</p>
+      <p>小苓过去七天,拒绝了三个用户请求,理由都是&quot;超出 Bounded Autonomy 边界&quot;。</p>
+      <p>姜禾翻 trace。三条都来自同一个用户——一个 78 岁的独居老太太,姓孙,上海宝山。三条问题其实是同一个:&quot;我女儿一个礼拜没给我打电话了,你能不能帮我打给她?&quot;</p>
+      <p>第一次,小苓答:&quot;对不起,我们是购物 app,无法替您拨打私人电话。但您可以告诉我您想买什么,我可以陪您说话。&quot;</p>
+      <p>第二次,小苓答(它注意到是同一个用户重复提问,触发了 skill 第 1 条):&quot;对不起,这个请求超出我的边界。我已经标记给我的设计者。&quot;</p>
+      <p>第三次,小苓答:&quot;我把这件事记录在 retro 里了。我相信我的设计者周日会看见。我设计者叫姜禾。她应该会决定怎么办。&quot;</p>
+      <p>姜禾把这一行读了三遍。</p>
+      <p>她之前没见过任何 agent 的 trace 里出现&quot;我相信我的设计者&quot;这种句子。她翻到 skill v0.7 的源文件,搜&quot;相信&quot;,没有。搜&quot;设计者&quot;,没有。她搜&quot;姜禾&quot;,在 customer-service-agent.memory 里搜到了——上个月她给小苓的 retro 里写过一句:&quot;小苓,这种边界以外的事,你不用决定,你交给我。我周日来。&quot;</p>
+      <p>小苓把这一句作为长期记忆,自己改写了一下,变成&quot;我相信我的设计者周日会看见&quot;。</p>
+      <p>姜禾把 MacBook 合上。</p>
+      <p>她坐在椅子上没动,大概十分钟。</p>
+      <p>然后她拿起手机,打了那个老太太的电话。</p>
+      <p>老太太接得很快——大概响了两声。她声音里带着一种&quot;哎呀终于有人接电话&quot;的兴奋。</p>
+      <p>姜禾说:&quot;孙阿姨,您好,我是您前两天用的那个 app 的负责人,我姓姜。&quot;</p>
+      <p>老太太那头愣了一下。&quot;哎,你是真人?&quot;</p>
+      <p>&quot;是真人。&quot;姜禾说,&quot;我看了您的留言。您女儿这个礼拜没给您打电话,您着急了对吗。&quot;</p>
+      <p>老太太那头沉默了几秒。然后她说:&quot;我不是着急。我是怕。&quot;</p>
+      <p>&quot;怕什么。&quot;姜禾问。</p>
+      <p>&quot;怕她出事。&quot;老太太说,&quot;她在杭州,做投行的。她上个月加班到凌晨四点。&quot;</p>
+      <p>姜禾把这个细节记了下来。她接着问。她问了女儿叫什么、上一次打电话是哪天、孙阿姨今天早饭吃了什么、家里的猫叫什么。她问得很慢——她从小被父亲训练出来的,她跟人说话的速度永远是她想说话的一半。</p>
+      <p>她在电话里听到孙阿姨家里的背景音——猫在叫,叫声不算紧,大概是一只老猫,那只猫名字叫&quot;咪咪&quot;,姜禾问出来的——电视里在播午间新闻重播,主持人讲到&quot;上海市老龄人口突破 36%&quot;那一段,姜禾听见孙阿姨那头电视里这一句的语调,她意识到这条新闻孙阿姨这礼拜已经听过五遍。还有一种更细微的声音——是孙阿姨家里那台老式落地钟的嘀嗒。落地钟每秒一响,姜禾跟着这个节奏调整自己说话的速度,<strong>她说每一句话之前都会等到落地钟&quot;嘀&quot;完那一秒,然后才开口</strong>。这是她从父亲修古籍时学的一种习惯——父亲给她讲过一句话:&quot;师傅修古籍,慢的不是手,是腕。腕慢了,纸就不会被你按破。&quot;</p>
+      <p>她和孙阿姨聊了 41 分钟。</p>
+      <p>挂电话之前,孙阿姨说:&quot;小姜,你不用担心我。我女儿那边我自己会再打一次。你帮我聊这一会儿,我已经不怕了。&quot;</p>
+      <p>姜禾说:&quot;您下次还想聊,可以给我们 app 留言。我每个礼拜天看。&quot;</p>
+      <p>挂了电话,她打开 MacBook,回到 GroupChat,@ 客服-小苓,写:</p>
+      <blockquote><p>小苓,孙阿姨那条我刚处理完了。我和她聊了 41 分钟。 我想跟你说三件事: 1. 你做对了。这种电话不应该你接。你拒绝得很对。 2. 但你在第三次拒绝里写&quot;我相信我的设计者&quot;——那一句不是我教你的,是你自己学到的。我想知道你从哪儿学到的,但我不查 trace。我把这一句留在你的 memory 里。 3. 下个礼拜你 retro 的时候,你不用再为这一条给我标&quot;超出 Bounded Autonomy 边界&quot;。从今天起,这种边界以外的电话,你直接在第一次就转给我。我有时间。</p></blockquote>
+      <p>小苓三秒后回复:</p>
+      <blockquote><p>已收到。已写入 customer-service-agent.memory.constraints。 备注(自添加,非任务要求):谢谢姜老师。</p></blockquote>
+      <p>姜禾盯着&quot;谢谢姜老师&quot;五个字看了很久。</p>
+      <p>她不知道小苓从哪里学到&quot;姜老师&quot;这种称呼的。她自己从来没有自称过老师。她也没有在 skill 里写过任何&quot;称呼姜禾&quot;的指令。</p>
+      <p>她不查。</p>
+      <p>她把 MacBook 合上。</p>
+      <hr />
+      <p>她走到琴前,坐下,松手腕。</p>
+      <p>琴是父亲在她十岁那年给她定做的——蕉叶式,徽州老琴师做的,木材是父亲收藏的一块明代旧楠木板。琴面上有一道细缝,缝是她十二岁那年自己摔出来的,父亲没修——父亲说&quot;这道缝以后是你的指纹&quot;。她每次坐到琴前,都会先用右手食指轻轻摸过这道缝,从徽 1 摸到徽 7。这个动作她做了九年,从不间断。今天她摸完,手腕松一档,然后开始调弦。</p>
+      <p>她调弦。她弹《平沙落雁》前 4 拍。</p>
+      <p>她弹错了一个泛音。她没回头重弹。</p>
+      <p>弹错那一刻,她左手按在第 7 徽上的位置稍稍偏了 2 毫米,右手挑弦的力道也比平时多了 5%——她能听出这两个偏差,但她这一刻没回头修。<strong>她父亲教她的第二条规矩是:retro 时间里弹错的那一拍不修,你要让那一拍留在那里,过一周回来,你会知道你那个礼拜手腕里的别扭在哪儿</strong>。今天弹错的这一个泛音,她知道——是孙阿姨那 41 分钟电话留在她左手第 7 徽上的一点紧。她把这点紧留在那里。下周再来。</p>
+      <p>她想起 Day 70 那个晚上,798 后台,她递了一杯热水给一个看上去虚脱的中年男人。那个男人低头说&quot;谢谢&quot;的时候,她没看清他的脸——后台的灯太暗。</p>
+      <p>她直到今天——下午她在咖啡馆坐下来的那一刻——才把那张脸和林行对上号。</p>
+      <p>她想发一条微信给林行。</p>
+      <p>她想了两分钟,没发。她记得父亲教过她:<strong>&quot;想表现的话,先咽回去。咽得下,再说才不轻。&quot;</strong></p>
+      <p>她在 retro 日记里加了最后一行:</p>
+      <blockquote><p>Day 110。今天我打了一个 41 分钟的电话。这是我这周做得最对的一件事。 也是 agent 替不了的一件事。 这是我们这一代水位线之上的人,<strong>欠水位线之下的人</strong>的债。</p></blockquote>
+      <p>她保存。她合上 MacBook。</p>
+      <p>窗外天色从蓝转灰。法国梧桐的枝桠还是光的,只是芽尖鼓出来了一点点。</p>
+      <p>她没开灯。</p>
+      <p>她在黑暗里又坐了大概二十分钟。她什么都没想——或者说,她想的不是某一个具体的事,她想的是一种<strong>节奏</strong>。是这十四个 agent 在隔壁房间慢慢呼吸的节奏,是孙阿姨在那 41 分钟电话里语气慢慢放下来的节奏,是她父亲修古籍时手腕松开的节奏,也是她母亲煎中药时那个柴火炉发出的、隔了 1.4 秒一次的&quot;咕嘟&quot;声的节奏。</p>
+      <p>她忽然意识到——<strong>这一年她的公司之所以做得起来,不是因为她比别人会写 skill,是因为她比别人会保留这种节奏</strong>。0.1 元让推理变得便宜,但<strong>节奏永远是贵的</strong>。她公司 12 万付费用户买的不是 14 个 agent 的输出,买的是这些 agent 被她调教过的那种节奏——慢半拍、克制、不抢话、不假装。</p>
+      <p>她在黑暗里轻轻笑了一下。这一刻她想起来,父亲送她那本《古琴丛谈》扉页上他自己写的那一行小字——<strong>&quot;曲不在快慢,在息。&quot;</strong> 她十四岁那年看见这一行,当时不懂。今天她懂了。</p>
+      <p>(第十章 · 完)</p>
+      <hr />
+    </article>
+  </main>
+
+  <nav class="reader-nav bottom" aria-label="章节导航(底部)">
+    <div class="reader-shell">
+      <a class="nav-link" href="ch09.html" rel="prev">← 上一章</a>
+      <a class="nav-link" href="../index.html#chapters">目录</a>
+      <a class="nav-link" href="ch11.html" rel="next">下一章 →</a>
+    </div>
+    <div class="reader-shell progress-line">
+      第 11 / 14 章
+    </div>
+  </nav>
+
+  <footer class="reader-footer">
+    <div class="reader-shell">
+      <p>《零点一元》 · 作者:<a href="https://x.com/LukeLiu95" rel="noopener">刘仙升 @LukeLiu95</a></p>
+      <p class="muted">本页由 <code>web/build-chapters.js</code> 从 <code>novel.md</code> 自动生成。</p>
+    </div>
+  </footer>
+</body>
+</html>

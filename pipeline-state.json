@@ -2,10 +2,10 @@
   "$schema": "https://gei-agent.local/schemas/pipeline-state.schema.json",
   "pipeline_version": "v6.1",
   "created_at": "2026-04-29T00:30:00Z",
-  "updated_at": "2026-04-29T12:05:00+09:00",
+  "updated_at": "2026-04-29T13:30:00+09:00",
   "output_dir": "output/零点一元",
   "current_phase": "D",
-  "current_step": "D.round-013-complete",
+  "current_step": "D.round-014-complete",
   "phase_status": {
     "A": "completed",
     "B": "completed",
@@ -35,7 +35,8 @@
     "D.round-010-web-split-reader",
     "D.round-011-literary-retain",
     "D.round-012-publish",
-    "D.round-013-web-analytics"
+    "D.round-013-web-analytics",
+    "D.round-014-web-full-reader"
   ],
   "confirmed_params": {
     "customer_name": "小说创作",
@@ -73,12 +74,16 @@
       {
         "round": "001",
         "type": "improvement",
-        "weighted_total": 88.20,
+        "weighted_total": 88.2,
         "score_delta_pp": 3.05,
         "completed_at": "2026-04-29T01:40:00Z",
         "doc": "ceo-rounds/round-001.md",
         "decision": "方案B · 新增第四章半 · 周末",
-        "resolved": ["R-001", "R-002", "R-003"],
+        "resolved": [
+          "R-001",
+          "R-002",
+          "R-003"
+        ],
         "next_round_recommendation": "stop_or_user_choice"
       },
       {
@@ -96,7 +101,7 @@
         "round": "003",
         "type": "major_extension",
         "weighted_total": 90.85,
-        "score_delta_pp": 1.30,
+        "score_delta_pp": 1.3,
         "completed_at": "2026-04-29T02:30:00Z",
         "doc": "ceo-rounds/round-003.md",
         "decision": "第1章重写(钩子方案A1)+ 第5-13章9章正文一次性交付,全书闭合",
@@ -112,13 +117,29 @@
         "round": "004",
         "type": "prose_polish",
         "weighted_total": 91.65,
-        "score_delta_pp": 0.80,
+        "score_delta_pp": 0.8,
         "completed_at": "2026-04-29T03:00:00Z",
         "doc": "ceo-rounds/round-004.md",
         "decision": "对 round-003 字数偏短的 7 章(5/6/7/8/10/11/12)做密度扩写,各章进入 2500-3000 中文字区间",
         "rationale": "用户硬要求 · 不重写主线 · 只走场景细节/配角侧写/感官描写/心理留白",
-        "extended_chapters": ["5", "6", "7", "8", "10", "11", "12"],
-        "untouched_chapters": ["1", "2", "3", "4", "4.5", "9", "13"],
+        "extended_chapters": [
+          "5",
+          "6",
+          "7",
+          "8",
+          "10",
+          "11",
+          "12"
+        ],
+        "untouched_chapters": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "4.5",
+          "9",
+          "13"
+        ],
         "novel_zh_total_before": 28553,
         "novel_zh_total_after": 35628,
         "novel_zh_delta": 7075,
@@ -129,7 +150,7 @@
         "round": "005",
         "type": "tooling_correctness",
         "weighted_total": 92.85,
-        "score_delta_pp": 1.20,
+        "score_delta_pp": 1.2,
         "completed_at": "2026-04-29T03:30:00Z",
         "doc": "ceo-rounds/round-005.md",
         "decision": "Ch2 co-reviewer 从 Manus 改为 Claude Code · Manus 收窄到 Ch8 葬礼朗读 · 配套文档矩阵更新",
@@ -140,7 +161,7 @@
       {
         "round": "006",
         "type": "paradigm_audit",
-        "weighted_total": 93.30,
+        "weighted_total": 93.3,
         "score_delta_pp": 0.45,
         "completed_at": "2026-04-29T03:45:00Z",
         "doc": "ceo-rounds/round-006.md",
@@ -161,15 +182,30 @@
       {
         "round": "007",
         "type": "consistency_audit",
-        "weighted_total": 93.50,
-        "score_delta_pp": 0.20,
+        "weighted_total": 93.5,
+        "score_delta_pp": 0.2,
         "completed_at": "2026-04-29T04:00:00Z",
         "doc": "ceo-rounds/round-007.md",
         "decision": "三轴扫描 · 35 检查点 33 通过 + 2 sentence-level 修复 + 1 spec 同步",
         "rationale": "round-006 § 6 备选 1 · 横向 audit 与 round-006 纵向 audit 互补 · 确认全书硬度",
-        "axis_a_signature_actions": {"slots_checked": 21, "drift": 1, "fixed": 1, "infection_chains_confirmed": 3},
-        "axis_b_timeline": {"day_markers_checked": 14, "consistent": 14, "season_drift": 1, "spec_sync": 1},
-        "axis_c_concept_density": {"anchors_checked": 15, "avg_score": 86.27, "target_range": "70-90", "drift": 0},
+        "axis_a_signature_actions": {
+          "slots_checked": 21,
+          "drift": 1,
+          "fixed": 1,
+          "infection_chains_confirmed": 3
+        },
+        "axis_b_timeline": {
+          "day_markers_checked": 14,
+          "consistent": 14,
+          "season_drift": 1,
+          "spec_sync": 1
+        },
+        "axis_c_concept_density": {
+          "anchors_checked": 15,
+          "avg_score": 86.27,
+          "target_range": "70-90",
+          "drift": 0
+        },
         "changes_count": 3,
         "novel_char_delta": "+115",
         "next_round_recommendation": "stop_default"
@@ -177,7 +213,7 @@
       {
         "round": "008",
         "type": "web_landing_page",
-        "weighted_total": 93.50,
+        "weighted_total": 93.5,
         "score_delta_pp": 0,
         "completed_at": "2026-04-29T09:30:00+09:00",
         "doc": "ceo-rounds/round-008.md",
@@ -244,7 +280,7 @@
         "round": "011",
         "type": "literary_retain",
         "weighted_total": 94.25,
-        "score_delta_pp": 0.20,
+        "score_delta_pp": 0.2,
         "completed_at": "2026-04-29T10:30:00+09:00",
         "doc": "ceo-rounds/round-011.md",
         "decision": "Ch3 L289 后插入 ~145 字 · 姜禾在本地 config 给 DeepSeek V5 起私下昵称 Lyra · 古希腊七弦琴 ↔ 古琴跨文化映射回到正文",
@@ -319,6 +355,31 @@
           "web_page_script_count": 1,
           "novel_page_script_count": 1,
           "duplicate_cdn_script_removed": "pass"
+        },
+        "next_round_recommendation": "stop_default"
+      },
+      {
+        "round": "014",
+        "type": "web_full_reader",
+        "weighted_total": 94.65,
+        "score_delta_pp": 0.4,
+        "completed_at": "2026-04-29T13:30:00+09:00",
+        "doc": "ceo-rounds/round-014.md",
+        "decision": "全文 HTML 章节阅读器 (14 章 / build-chapters.js / reader.css) + 作者信息 (刘仙升 @LukeLiu95)",
+        "rationale": "round-010 的 split-reader 装不下 50K 字全文;同时用户要求落地作者归属",
+        "deliverables": [
+          "web/build-chapters.js (Node.js · 0 deps · 216 行)",
+          "web/assets/reader.css (~210 行 · 行宽 700px / 字号 19px / 行高 1.95 / 暗色模式)",
+          "web/chapters/ch01..ch13.html + ch04-half.html (14 文件)",
+          "web/index.html: meta author + hero byline + 章节链接化 + 在线阅读入口 + footer 作者",
+          "web/novel.html: split-reader → 章节目录页"
+        ],
+        "validation": {
+          "novel_md_body_chars": 49616,
+          "chapters_total_body_chars": 49616,
+          "chars_match": true,
+          "chapters_count": 14,
+          "verifier_exit": 0
         },
         "next_round_recommendation": "stop_default"
       }
