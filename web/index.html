@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>零点一元 · 小说生成过程页</title>
+  <meta name="description" content="《零点一元》小说生成过程、世界观、人物、文物与原文完整阅读路径。" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23111316'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-size='18' fill='%23f6f1e8' font-family='serif'%3E零%3C/text%3E%3C/svg%3E" />
+  <style>
+    :root {
+      --paper: #f6f1e8;
+      --paper-2: #eee5d7;
+      --paper-3: #dfd1bd;
+      --ink: #171717;
+      --ink-2: #34302a;
+      --muted: #71695f;
+      --line: #cfc0aa;
+      --line-2: rgba(255,255,255,.22);
+      --rust: #a74428;
+      --copper: #c37a42;
+      --teal: #286f71;
+      --green: #536f3a;
+      --plum: #68475f;
+      --night: #111316;
+      --night-2: #1b1e23;
+      --max: 1180px;
+      --gutter: clamp(18px, 4vw, 44px);
+      --serif: "Songti SC", "Noto Serif CJK SC", "STSong", Georgia, serif;
+      --sans: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 400 16px/1.7 var(--sans);
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;
+      opacity: .36;
+      background-image:
+        linear-gradient(rgba(0,0,0,.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,.014) 1px, transparent 1px);
+      background-size: 28px 28px, 28px 28px;
+      mix-blend-mode: multiply;
+    }
+    a { color: inherit; text-decoration-color: rgba(167,68,40,.38); text-underline-offset: 4px; }
+    a:hover { color: var(--rust); text-decoration-color: var(--rust); }
+
+    .shell { width: min(var(--max), calc(100% - var(--gutter) * 2)); margin: 0 auto; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid rgba(255,255,255,.15);
+      background: rgba(17,19,22,.82);
+      color: rgba(255,255,255,.78);
+      backdrop-filter: blur(12px) saturate(130%);
+    }
+    .topbar .shell {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand {
+      font-family: var(--serif);
+      font-size: 20px;
+      color: #fff;
+      letter-spacing: .08em;
+      white-space: nowrap;
+    }
+    .nav { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+    .nav::-webkit-scrollbar { display: none; }
+    .nav a {
+      flex: 0 0 auto;
+      padding: 6px 10px;
+      border-radius: 4px;
+      color: rgba(255,255,255,.74);
+      text-decoration: none;
+      font-size: 13px;
+    }
+    .nav a:hover { background: rgba(255,255,255,.1); color: #fff; }
+
+    .hero {
+      position: relative;
+      min-height: 0;
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      background: var(--night);
+      color: #fff;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(17,19,22,.92) 0%, rgba(17,19,22,.76) 38%, rgba(17,19,22,.34) 72%, rgba(17,19,22,.7) 100%),
+        linear-gradient(180deg, rgba(17,19,22,.18) 0%, rgba(17,19,22,.8) 88%),
+        url("/web/assets/zero-one-yuan-hero.png") center / cover no-repeat;
+      transform: scale(1.01);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 16.5%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(124,210,213,.8), rgba(255,255,255,.2), transparent);
+      box-shadow: 0 0 28px rgba(124,210,213,.45);
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      padding: clamp(56px, 7vw, 98px) 0 clamp(42px, 6vw, 72px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 340px;
+      gap: clamp(32px, 7vw, 84px);
+      align-items: end;
+    }
+    .eyebrow {
+      margin: 0 0 18px;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: #88d0d2;
+    }
+    h1 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(54px, 12vw, 150px);
+      line-height: .92;
+      letter-spacing: .03em;
+      font-weight: 500;
+    }
+    .subtitle {
+      margin: 18px 0 0;
+      max-width: 620px;
+      font-size: clamp(18px, 2.1vw, 25px);
+      line-height: 1.55;
+      color: rgba(255,255,255,.86);
+    }
+    .hero-side {
+      border-left: 1px solid var(--line-2);
+      padding-left: 22px;
+      color: rgba(255,255,255,.74);
+      font-size: 14px;
+    }
+    .hero-side strong {
+      display: block;
+      margin: 0 0 8px;
+      color: #fff;
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 500;
+    }
+    .hero-stats {
+      margin: 20px 0 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .hero-stats span {
+      display: block;
+      border-top: 1px solid var(--line-2);
+      padding-top: 8px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: rgba(255,255,255,.62);
+    }
+    .hero-stats b {
+      display: block;
+      color: #fff;
+      font-size: 18px;
+      font-family: var(--sans);
+      font-weight: 600;
+    }
+
+    section { padding: clamp(48px, 8vw, 92px) 0; border-top: 1px solid var(--line); }
+    .section-head {
+      display: grid;
+      grid-template-columns: 230px minmax(0, 1fr);
+      gap: 52px;
+      align-items: start;
+      margin-bottom: 34px;
+    }
+    .kicker {
+      margin: 0;
+      color: var(--rust);
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    h2 {
+      margin: 0;
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(30px, 5vw, 58px);
+      line-height: 1.12;
+      letter-spacing: .02em;
+    }
+    .intro {
+      margin: 14px 0 0;
+      max-width: 760px;
+      color: var(--ink-2);
+      font-size: 18px;
+    }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+    .phase {
+      min-height: 300px;
+      padding: 24px;
+      background: rgba(255,255,255,.34);
+    }
+    .phase .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 28px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .phase .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--phase-color); }
+    .phase h3 {
+      margin: 0 0 12px;
+      font-size: 22px;
+      font-weight: 650;
+      color: var(--ink);
+    }
+    .phase p { margin: 0; color: var(--muted); }
+    .phase ul { margin: 18px 0 0; padding: 0; list-style: none; }
+    .phase li {
+      padding: 10px 0;
+      border-top: 1px solid rgba(0,0,0,.09);
+      color: var(--ink-2);
+      font-size: 14px;
+    }
+    .phase-a { --phase-color: var(--teal); }
+    .phase-b { --phase-color: var(--green); }
+    .phase-c { --phase-color: var(--copper); }
+    .phase-d { --phase-color: var(--plum); }
+
+    .world-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+    .waterline {
+      position: relative;
+      min-height: 430px;
+      padding: 32px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(246,241,232,.96) 0 48%, rgba(40,111,113,.18) 48% 100%),
+        radial-gradient(circle at 78% 16%, rgba(195,122,66,.25), transparent 28%);
+      border: 1px solid var(--line);
+    }
+    .waterline::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 48%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--teal), transparent);
+      box-shadow: 0 0 22px rgba(40,111,113,.45);
+    }
+    .waterline .price {
+      font-family: var(--serif);
+      font-size: clamp(70px, 12vw, 132px);
+      line-height: .85;
+      letter-spacing: -.02em;
+      color: var(--rust);
+    }
+    .waterline .unit { font-family: var(--mono); color: var(--muted); }
+    .waterline .below {
+      position: absolute;
+      left: 32px;
+      right: 32px;
+      bottom: 28px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      font-size: 14px;
+      color: var(--ink-2);
+    }
+    .world-notes {
+      display: grid;
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+    .note {
+      background: rgba(255,255,255,.34);
+      padding: 22px;
+    }
+    .note h3 { margin: 0 0 8px; font-size: 19px; }
+    .note p { margin: 0; color: var(--muted); }
+
+    .relics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    .relic {
+      position: relative;
+      min-height: 210px;
+      padding: 18px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.36);
+    }
+    .relic::before {
+      content: attr(data-no);
+      position: absolute;
+      right: 14px;
+      top: 10px;
+      color: rgba(0,0,0,.12);
+      font: 700 42px/1 var(--mono);
+    }
+    .relic .icon {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 20px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      color: var(--rust);
+      font-family: var(--mono);
+      font-weight: 700;
+    }
+    .relic h3 { margin: 0 0 8px; font-size: 18px; }
+    .relic p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    .characters {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .person {
+      padding: 24px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.42), rgba(255,255,255,.18));
+    }
+    .person h3 {
+      margin: 0 0 10px;
+      font-family: var(--serif);
+      font-size: 30px;
+      font-weight: 500;
+    }
+    .person .role {
+      margin: 0 0 18px;
+      color: var(--rust);
+      font-family: var(--mono);
+      font-size: 12px;
+    }
+    .person p { margin: 0 0 16px; color: var(--ink-2); }
+    .person .arc {
+      margin-top: 20px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(0,0,0,.1);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .chapters {
+      counter-reset: chapter;
+      display: grid;
+      gap: 10px;
+    }
+    .chapter {
+      counter-increment: chapter;
+      display: grid;
+      grid-template-columns: 88px minmax(0, 1fr) 150px;
+      gap: 20px;
+      align-items: center;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .chapter .num {
+      color: var(--rust);
+      font: 600 15px/1 var(--mono);
+    }
+    .chapter h3 { margin: 0 0 4px; font-size: 19px; }
+    .chapter p { margin: 0; color: var(--muted); font-size: 14px; }
+    .chapter .day {
+      justify-self: end;
+      color: var(--teal);
+      font-family: var(--mono);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .reading {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .path-card {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.34);
+      padding: 24px;
+    }
+    .path-card h3 { margin: 0 0 14px; font-size: 20px; }
+    .path-card ol,
+    .path-card ul { margin: 0; padding-left: 22px; }
+    .path-card li { margin: 10px 0; color: var(--ink-2); }
+    code {
+      font-family: var(--mono);
+      font-size: .92em;
+      color: var(--rust);
+      overflow-wrap: anywhere;
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0 44px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 980px) {
+      .hero-inner,
+      .section-head,
+      .world-grid,
+      .reading { grid-template-columns: 1fr; }
+      .hero-side { border-left: 0; padding-left: 0; border-top: 1px solid var(--line-2); padding-top: 20px; }
+      .process { grid-template-columns: repeat(2, 1fr); }
+      .relics,
+      .characters { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 680px) {
+      .topbar .shell { align-items: flex-start; flex-direction: column; padding: 12px 0; gap: 10px; }
+      .hero-inner { padding: 60px 0 44px; }
+      .process,
+      .relics,
+      .characters { grid-template-columns: 1fr; }
+      .waterline .below { grid-template-columns: 1fr; }
+      .chapter { grid-template-columns: 58px minmax(0, 1fr); }
+      .chapter .day { grid-column: 2; justify-self: start; }
+      .nav { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell">
+      <div class="brand">零点一元</div>
+      <nav class="nav" aria-label="页面导航">
+        <a href="#process">生成过程</a>
+        <a href="#world">世界观</a>
+        <a href="#relics">文物</a>
+        <a href="#characters">人物</a>
+        <a href="#chapters">章节</a>
+        <a href="#read">阅读路径</a>
+        <a href="novel.html">小说主体</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="《零点一元》封面">
+      <div class="shell hero-inner">
+        <div>
+      <p class="eyebrow">Novel production dossier · 2026-2027</p>
+          <h1>零点一元</h1>
+          <p class="subtitle">推理崩塌后的六个月。一个被裁的高级工程师、一个 19 岁的 skill writer、一个还没倒闭的 SaaS 创始人，在水位线两侧各自找活法。</p>
+        </div>
+        <aside class="hero-side" aria-label="项目概览">
+          <strong>不是赛博朋克，是安静的崩塌。</strong>
+      <p>这张页面读取项目文档后生成，把 GEI 从需求访谈、世界观、人物档、正文扩写、DeepSeek V5 事实锚定到一致性审计的全过程可视化。</p>
+          <div class="hero-stats">
+            <span><b>13</b>章节闭合</span>
+            <span><b>181</b>天时间线</span>
+            <span><b>94.05</b>最终评分</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="shell">
+        <div class="section-head">
+          <p class="kicker">Process</p>
+          <div>
+            <h2>从一句价格表，长成一部小说。</h2>
+      <p class="intro">项目状态显示 A/B/C/D 四阶段已完成。生成过程不是“直接写正文”，而是先把主题、验收标准、世界规则和人物动作固定，再通过 9 轮 Phase D 把正文补全、抛光、审计，并完成 DeepSeek V5 的真实模型锚定。</p>
+          </div>
+        </div>
+        <div class="process" role="list">
+          <article class="phase phase-a" role="listitem">
+            <div class="tag"><span class="dot"></span>Phase A</div>
+            <h3>需求工程</h3>
+            <p>把“0.1 元 / 1M token”从科技新闻变成小说母题。</p>
+            <ul>
+              <li>5 轮 discovery interview</li>
+              <li>5 个目标与验收标准</li>
+              <li>三幕阅读节奏与情感落点</li>
+            </ul>
+          </article>
+          <article class="phase phase-b" role="listitem">
+            <div class="tag"><span class="dot"></span>Phase B</div>
+            <h3>创作骨架</h3>
+            <p>建立世界观、人物档、分场大纲，让正文有可追溯的骨架。</p>
+            <ul>
+              <li>水位线经济学</li>
+              <li>三主角弧线与招牌动作</li>
+              <li>13 章分场大纲</li>
+            </ul>
+          </article>
+          <article class="phase phase-c" role="listitem">
+            <div class="tag"><span class="dot"></span>Phase C</div>
+            <h3>正文与质检</h3>
+            <p>先写首批章节，再按主题、角色、概念融合、文学性和结构完成质量评估。</p>
+            <ul>
+              <li>第 1-4 章基础正文</li>
+              <li>质量评分 85.15</li>
+              <li>识别妻子戏份与主题词缺口</li>
+            </ul>
+          </article>
+          <article class="phase phase-d" role="listitem">
+            <div class="tag"><span class="dot"></span>Phase D</div>
+            <h3>产品进化</h3>
+            <p>9 轮 CEO round 逐步补齐：妻子戏、术语迁移、全书扩写、章节抛光、事实纠错、一致性审计与 DeepSeek V5 模型重锚。</p>
+            <ul>
+              <li>第 5-13 章一次性闭合</li>
+              <li>Claude Code / Manus 职能纠偏</li>
+              <li>DeepSeek V5 真实模型锚定</li>
+              <li>最终评分 94.05</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="world">
+      <div class="shell">
+        <div class="section-head">
+          <p class="kicker">Worldbuilding</p>
+          <div>
+            <h2>世界观的核心，是一条价格形成的水位线。</h2>
+            <p class="intro">故事发生在 2026 年 10 月 29 日到 2027 年 4 月 28 日。DeepSeek V5 把推理价格打到 0.1 元 / 百万 token，同价、长上下文、能力超越公开基线，随后软件行业的估值、岗位和尊严开始重新定价。</p>
+          </div>
+        </div>
+        <div class="world-grid">
+          <div class="waterline" aria-label="水位线经济学示意">
+            <div class="price">0.1</div>
+            <div class="unit">RMB / 1M tokens · the waterline</div>
+            <div class="below">
+              <span>沉下去：IDE、横切 SaaS、代码工厂、高级工程师岗位</span>
+              <span>浮上来：行业 agent、skill marketplace、agent observability、遗产 curator</span>
+            </div>
+          </div>
+          <div class="world-notes">
+            <article class="note">
+              <h3>新职业</h3>
+              <p>skill writer、context engineer、taste curator、agent-ops、讣告 writer。入行变低，天花板反而更依赖审美和耐心。</p>
+            </article>
+            <article class="note">
+              <h3>新基础设施</h3>
+              <p>个人 token 钱包、reasoning gas 期货、agent observability SaaS，以及把 skill 当商品出售的市场。</p>
+            </article>
+            <article class="note">
+              <h3>新法律</h3>
+              <p>代码遗产法案与 Bounded Autonomy 审计标准，让“代码会不会被记住”从私人问题变成公共制度。</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="relics">
+      <div class="shell">
+        <div class="section-head">
+          <p class="kicker">Relics</p>
+          <div>
+            <h2>小说里的“文物”，都不是装饰。</h2>
+            <p class="intro">这些物件把抽象概念压回日常纹理：价格表、椅子、markdown、古琴曲名、旧照片、README、ThinkPad 和 final commit。</p>
+          </div>
+        </div>
+        <div class="relics">
+          <article class="relic" data-no="01">
+            <div class="icon">¥</div>
+            <h3>API 价格表</h3>
+            <p>Day 0 的 PDF。它不是新闻，而是全书的水位线。</p>
+          </article>
+          <article class="relic" data-no="02">
+            <div class="icon">A</div>
+            <h3>老吴的 Aeron 椅</h3>
+            <p>第 1 章重写后的第一镜头，用一把旋转的椅子把读者拉进崩塌现场。</p>
+          </article>
+          <article class="relic" data-no="03">
+            <div class="icon">md</div>
+            <h3>last-real-code.md</h3>
+            <p>林行把代码存进 markdown。后来它变成一整套“last-{某事}.md”。</p>
+          </article>
+          <article class="relic" data-no="04">
+            <div class="icon">琴</div>
+            <h3>平沙落雁 skill</h3>
+            <p>姜禾用古琴曲命名 skill，也永远删掉 DeepSeek V5 起草的第一句。</p>
+          </article>
+          <article class="relic" data-no="05">
+            <div class="icon">BP</div>
+            <h3>BP 里的老照片</h3>
+            <p>陆衡把父亲和殡仪馆的照片放进 BP，提醒自己软件要解决具体人的事。</p>
+          </article>
+          <article class="relic" data-no="06">
+            <div class="icon">R</div>
+            <h3>stripe-go README</h3>
+            <p>软件葬礼上由 Manus 朗读，像一段被归档的行业悼词。</p>
+          </article>
+          <article class="relic" data-no="07">
+            <div class="icon">T420</div>
+            <h3>ThinkPad T420</h3>
+            <p>陈守仁床头的旧机器，运行 Lyra-Curator，整理一生的代码遗产。</p>
+          </article>
+          <article class="relic" data-no="08">
+            <div class="icon">git</div>
+            <h3>final commit</h3>
+            <p>尾声里讣告末尾的一行代码语，把人的终点和软件的记忆扣在一起。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="characters">
+      <div class="shell">
+        <div class="section-head">
+          <p class="kicker">Characters</p>
+          <div>
+            <h2>三个人，三种活法。</h2>
+            <p class="intro">人物不是概念的传声筒。每个人都有自己的动作、物件和迟到的答案。</p>
+          </div>
+        </div>
+        <div class="characters">
+          <article class="person">
+            <h3>林行</h3>
+            <p class="role">高级工程师 → 临终关怀讣告 writer</p>
+            <p>他没有恨 agent。他只是慢慢承认，自己用三年的 Claude Code 从伙伴变成 co-reviewer，再变成替代者。</p>
+            <div class="arc">答案：愿意慢的能力。最终把“最后一次 code review”写成讣告。</div>
+          </article>
+          <article class="person">
+            <h3>姜禾</h3>
+            <p class="role">19 岁 skill writer · 古琴与约束</p>
+            <p>她不写代码，但会写边界。她把 agent 当同事，也知道有些电话只能自己打。</p>
+            <div class="arc">答案：审美。skill 的品味决定 agent 输出的天花板。</div>
+          </article>
+          <article class="person">
+            <h3>陆衡</h3>
+            <p class="role">SaaS 创始人 → 殡葬行业 agent</p>
+            <p>他从估值崩塌里回到县城殡仪馆，重新发现行业潜规则是通用模型抓不到的数据。</p>
+            <div class="arc">答案：数据。软件没死，死的是把软件当工厂的那种活法。</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="chapters">
+      <div class="shell">
+        <div class="section-head">
+          <p class="kicker">Chapter map</p>
+          <div>
+            <h2>三幕十三章，从 Day 0 到 Day 181。</h2>
+            <p class="intro">第一幕是水位线落下，第二幕是沉降，第三幕是新水面。第 4 章半是 Phase D 加入的妻子戏，把“水位线”这个词真正落到家庭内部。</p>
+          </div>
+        </div>
+        <div class="chapters">
+          <article class="chapter"><div class="num">Ch 01</div><div><h3>价格表</h3><p>Slack 八分钟零回复，会议第十一分钟陷入沉默。</p></div><div class="day">Day 0</div></article>
+          <article class="chapter"><div class="num">Ch 02</div><div><h3>最后一次代码评审</h3><p>Claude Code 写了 47 条，林行写到一半把手挪开。</p></div><div class="day">Day 1</div></article>
+          <article class="chapter"><div class="num">Ch 03</div><div><h3>19 岁的姜禾</h3><p>她不会写代码，但她会写约束。</p></div><div class="day">Day 5</div></article>
+          <article class="chapter"><div class="num">Ch 04</div><div><h3>影子工程师</h3><p>73% 工单被 triage-9 自动闭环，工程师变成签字员。</p></div><div class="day">Day 14</div></article>
+          <article class="chapter"><div class="num">Ch 4.5</div><div><h3>周末</h3><p>妻子沈知微第一次直接出场，说出“水位线”。</p></div><div class="day">Day 17</div></article>
+          <article class="chapter"><div class="num">Ch 05</div><div><h3>裁员邮件</h3><p>“我们没输给 AI，我们输给了 0.1 元。”</p></div><div class="day">Day 21</div></article>
+          <article class="chapter"><div class="num">Ch 06</div><div><h3>skill 学校</h3><p>下岗培训变成 Bounded Autonomy 入门。</p></div><div class="day">Day 35</div></article>
+          <article class="chapter"><div class="num">Ch 07</div><div><h3>创始人陆衡</h3><p>他在殡仪馆里重新想起数据护城河。</p></div><div class="day">Day 45</div></article>
+          <article class="chapter"><div class="num">Ch 08</div><div><h3>软件葬礼</h3><p>Manus 朗读 README，archived 仓库数投影在墙上。</p></div><div class="day">Day 70</div></article>
+          <article class="chapter"><div class="num">Ch 09</div><div><h3>范式之争</h3><p>数据、审美、愿意慢的能力，三种答案第一次同桌。</p></div><div class="day">Day 90</div></article>
+          <article class="chapter"><div class="num">Ch 10</div><div><h3>一个人公司</h3><p>14 个 agent 在另一个房间工作，姜禾自己打了那个电话。</p></div><div class="day">Day 110</div></article>
+          <article class="chapter"><div class="num">Ch 11</div><div><h3>林行的转身</h3><p>他没离开软件行业，只是不再做 agent 替他做的部分。</p></div><div class="day">Day 130</div></article>
+          <article class="chapter"><div class="num">Ch 12</div><div><h3>陆衡的反扑</h3><p>衡安 ARR 5000 万，垂直行业的真实数字不是平均数。</p></div><div class="day">Day 150</div></article>
+          <article class="chapter"><div class="num">Ch 13</div><div><h3>第 181 天</h3><p>代码会被记住吗？会的，被它配得上的人记住。</p></div><div class="day">Day 175-181</div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="read">
+      <div class="shell">
+        <div class="section-head">
+          <p class="kicker">Reading path</p>
+          <div>
+            <h2>原文完整阅读路径。</h2>
+            <p class="intro">推荐先读正文，再读世界观和生成档案。所有链接都指向项目内原始文件，方便从落地页回到完整文本。</p>
+          </div>
+        </div>
+        <div class="reading">
+          <article class="path-card">
+            <h3>读者路径</h3>
+            <ol>
+              <li>小说主体页面：<a href="novel.html">output/零点一元/web/novel.html</a></li>
+              <li>完整正文源文件：<a href="../novel.md">output/零点一元/novel.md</a></li>
+              <li>项目入口与一句话梗概：<a href="../README.md">output/零点一元/README.md</a></li>
+              <li>世界观：<a href="../worldbuilding.md">output/零点一元/worldbuilding.md</a></li>
+              <li>人物档案：<a href="../characters.md">output/零点一元/characters.md</a></li>
+              <li>分场大纲：<a href="../story-outline.md">output/零点一元/story-outline.md</a></li>
+            </ol>
+          </article>
+          <article class="path-card">
+            <h3>生成档案路径</h3>
+            <ul>
+              <li>需求访谈：<a href="../docs/discovery-interview.md">docs/discovery-interview.md</a></li>
+              <li>需求规格：<a href="../docs/requirements-spec.md">docs/requirements-spec.md</a></li>
+              <li>需求拆解：<a href="../docs/requirement-breakdown.md">docs/requirement-breakdown.md</a></li>
+              <li>质量评估：<a href="../quality-assessment.md">quality-assessment.md</a></li>
+              <li>Phase D 轮次：<a href="../ceo-rounds/round-000-baseline.md">round-000</a> → <a href="../ceo-rounds/round-007.md">round-007</a></li>
+              <li>当前状态：<a href="../pipeline-state.json">pipeline-state.json</a></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell">GEI product update · static landing page generated from <code>output/零点一元</code> project documents.</div>
+  </footer>
+</body>
+</html>

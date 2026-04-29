@@ -1,0 +1,262 @@
+{
+  "$schema": "https://gei-agent.local/schemas/pipeline-state.schema.json",
+  "pipeline_version": "v6.1",
+  "created_at": "2026-04-29T00:30:00Z",
+  "updated_at": "2026-04-29T10:30:00+09:00",
+  "output_dir": "output/零点一元",
+  "current_phase": "D",
+  "current_step": "D.round-011-complete",
+  "phase_status": {
+    "A": "completed",
+    "B": "completed",
+    "C": "completed",
+    "D": "completed"
+  },
+  "completed_steps": [
+    "A.discovery",
+    "A.requirements",
+    "A.breakdown",
+    "B.worldbuilding",
+    "B.characters",
+    "B.story-outline",
+    "B.chapters-tbd",
+    "C.novel-ch1-4",
+    "C.quality-assessment",
+    "D.round-000-baseline",
+    "D.round-001-improvement",
+    "D.round-002-terminology",
+    "D.round-003-major-extension",
+    "D.round-004-prose-polish",
+    "D.round-005-tooling-correctness",
+    "D.round-006-paradigm-audit",
+    "D.round-007-consistency-audit",
+    "D.round-008-web-landing-page",
+    "D.round-009-model-rebrand",
+    "D.round-010-web-split-reader",
+    "D.round-011-literary-retain"
+  ],
+  "confirmed_params": {
+    "customer_name": "小说创作",
+    "project_type": "backend_only",
+    "output_dir": "output/零点一元",
+    "novel_title": "零点一元",
+    "novel_subtitle": "推理崩塌后的六个月",
+    "threshold": 0.85,
+    "max_rounds": 3,
+    "ai_concept_anchors": [
+      "DeepSeek V5(0.1 元/百万 token 同价 · 推理超 Opus 5 公开基线 12.4% · 1000 万 token 上下文 · 全书'水位线'锚点 · round-009 替换原虚构 Lyra-1)",
+      "Claude Code(主力编程工具 · 林行 3 年 IDE + Ch2 co-reviewer + Ch11 临终关怀捐赠)",
+      "Manus(通用 agent 代表 · Ch8 葬礼朗读 stripe-go README)",
+      "ChatGPT Agent(对照组)",
+      "AutoGen v0.4 / AG2 GroupChat 多 agent 协作",
+      "Bounded Autonomy + 升级路径 + 审计追踪",
+      "Agent 长期记忆机制",
+      "Browser agent / 行业专用 agent",
+      "Skill-driven / context engineering 新岗位",
+      "Agent observability / 监控刚需",
+      "数据护城河之争",
+      "Gartner 40% 企业应用集成 task agent · 80% 工作场景嵌入 · 15% 决策自主"
+    ]
+  },
+  "reflections": [],
+  "phase_d": {
+    "rounds": [
+      {
+        "round": "000",
+        "type": "baseline",
+        "weighted_total": 85.15,
+        "completed_at": "2026-04-29T00:55:00Z",
+        "doc": "ceo-rounds/round-000-baseline.md"
+      },
+      {
+        "round": "001",
+        "type": "improvement",
+        "weighted_total": 88.20,
+        "score_delta_pp": 3.05,
+        "completed_at": "2026-04-29T01:40:00Z",
+        "doc": "ceo-rounds/round-001.md",
+        "decision": "方案B · 新增第四章半 · 周末",
+        "resolved": ["R-001", "R-002", "R-003"],
+        "next_round_recommendation": "stop_or_user_choice"
+      },
+      {
+        "round": "002",
+        "type": "terminology_shift",
+        "weighted_total": 89.55,
+        "score_delta_pp": 1.35,
+        "completed_at": "2026-04-29T01:55:00Z",
+        "doc": "ceo-rounds/round-002.md",
+        "decision": "全局 spec → skill 替换(保护 GEI 内部文档名)",
+        "rationale": "用户指令 + 与 2026 真实概念(Anthropic Claude Skills)对齐",
+        "next_round_recommendation": "stop_or_user_choice"
+      },
+      {
+        "round": "003",
+        "type": "major_extension",
+        "weighted_total": 90.85,
+        "score_delta_pp": 1.30,
+        "completed_at": "2026-04-29T02:30:00Z",
+        "doc": "ceo-rounds/round-003.md",
+        "decision": "第1章重写(钩子方案A1)+ 第5-13章9章正文一次性交付,全书闭合",
+        "rationale": "用户硬要求 · 全书首次完整闭合",
+        "ch1_hook_choice": "A1",
+        "ch1_hook_rationale": "具体物件(老吴 Aeron 椅旋转)+具体时间(9:46),把读者锁进林行视角,且不剧透 0.10 元",
+        "ch5_13_zh_total": 18448,
+        "novel_zh_total": 28553,
+        "novel_zh_target": "45000-55000",
+        "next_round_recommendation": "stop_default"
+      },
+      {
+        "round": "004",
+        "type": "prose_polish",
+        "weighted_total": 91.65,
+        "score_delta_pp": 0.80,
+        "completed_at": "2026-04-29T03:00:00Z",
+        "doc": "ceo-rounds/round-004.md",
+        "decision": "对 round-003 字数偏短的 7 章(5/6/7/8/10/11/12)做密度扩写,各章进入 2500-3000 中文字区间",
+        "rationale": "用户硬要求 · 不重写主线 · 只走场景细节/配角侧写/感官描写/心理留白",
+        "extended_chapters": ["5", "6", "7", "8", "10", "11", "12"],
+        "untouched_chapters": ["1", "2", "3", "4", "4.5", "9", "13"],
+        "novel_zh_total_before": 28553,
+        "novel_zh_total_after": 35628,
+        "novel_zh_delta": 7075,
+        "novel_zh_target": "45000-55000",
+        "next_round_recommendation": "stop_default"
+      },
+      {
+        "round": "005",
+        "type": "tooling_correctness",
+        "weighted_total": 92.85,
+        "score_delta_pp": 1.20,
+        "completed_at": "2026-04-29T03:30:00Z",
+        "doc": "ceo-rounds/round-005.md",
+        "decision": "Ch2 co-reviewer 从 Manus 改为 Claude Code · Manus 收窄到 Ch8 葬礼朗读 · 配套文档矩阵更新",
+        "rationale": "用户事实纠错 · Manus 是通用 agent,Claude Code 才是编程主力 · 意外收益:Ch2/Ch4 跨章回响成立",
+        "side_effect_bonus": "林行的 Claude Code 在 Ch2(co-reviewer 47 条)+ Ch4(他用了 3 年的旧伙伴) + Ch11(医院捐赠设备)三章构成命运闭环",
+        "next_round_recommendation": "ch9_paradigm_internal_audit"
+      },
+      {
+        "round": "006",
+        "type": "paradigm_audit",
+        "weighted_total": 93.30,
+        "score_delta_pp": 0.45,
+        "completed_at": "2026-04-29T03:45:00Z",
+        "doc": "ceo-rounds/round-006.md",
+        "decision": "Ch9 内部审计 · 5 维度独立评分 · 实施 1 处 sentence-level 改动(L1218 后插入陆衡市场反质问 + 林行答案归属还给妻子)",
+        "rationale": "round-005 § 6 建议方向 · 审计型 round 确认 Ch9 思想节点硬度 · 4/5 维度通过 + 1 处补硬度",
+        "audit_dimensions_score": {
+          "logic_hardness": 86,
+          "character_correspondence": 94,
+          "willing_to_be_slow_specific": 90,
+          "scene_hook_middle_ending": 88,
+          "concept_hardness_2026": 85
+        },
+        "changes_count": 1,
+        "char_delta": "+90~120",
+        "untouched_ch9_ending": "L1320-1345 妻子台灯结尾段保持不动",
+        "next_round_recommendation": "stop_default"
+      },
+      {
+        "round": "007",
+        "type": "consistency_audit",
+        "weighted_total": 93.50,
+        "score_delta_pp": 0.20,
+        "completed_at": "2026-04-29T04:00:00Z",
+        "doc": "ceo-rounds/round-007.md",
+        "decision": "三轴扫描 · 35 检查点 33 通过 + 2 sentence-level 修复 + 1 spec 同步",
+        "rationale": "round-006 § 6 备选 1 · 横向 audit 与 round-006 纵向 audit 互补 · 确认全书硬度",
+        "axis_a_signature_actions": {"slots_checked": 21, "drift": 1, "fixed": 1, "infection_chains_confirmed": 3},
+        "axis_b_timeline": {"day_markers_checked": 14, "consistent": 14, "season_drift": 1, "spec_sync": 1},
+        "axis_c_concept_density": {"anchors_checked": 15, "avg_score": 86.27, "target_range": "70-90", "drift": 0},
+        "changes_count": 3,
+        "novel_char_delta": "+115",
+        "next_round_recommendation": "stop_default"
+      },
+      {
+        "round": "008",
+        "type": "web_landing_page",
+        "weighted_total": 93.50,
+        "score_delta_pp": 0,
+        "completed_at": "2026-04-29T09:30:00+09:00",
+        "doc": "ceo-rounds/round-008.md",
+        "decision": "为《零点一元》生成静态 web 落地页 · 展示小说生成过程、世界观、文物、人物、章节路线和原文完整阅读路径",
+        "rationale": "用户产品更新请求 · 将 backend_only 内容创作项目转成可浏览介绍页,让读者能理解 GEI 生成过程并直接进入原文",
+        "artifacts": [
+          "web/index.html",
+          "web/assets/zero-one-yuan-hero.png"
+        ],
+        "validation": {
+          "desktop_viewport": "1470x768 pass",
+          "mobile_viewport": "390x844 pass",
+          "console_new_errors": 0
+        },
+        "image_generation": "built-in image_gen hero asset",
+        "next_round_recommendation": "stop_default",
+        "note": "round-008.md was accidentally overwritten by user-driven round-009 model_rebrand; restored from pipeline-state metadata + web/ artifacts inspection"
+      },
+      {
+        "round": "009",
+        "type": "model_rebrand",
+        "weighted_total": 94.05,
+        "score_delta_pp": 0.55,
+        "completed_at": "2026-04-29T04:30:00Z",
+        "doc": "ceo-rounds/round-009.md",
+        "decision": "Lyra-1 → DeepSeek V5(全局 31 处)+ 'Lyra' 非 -Curator → V5(7 处)+ Lyra-Curator 完整保留(20+ 处)+ Ch1 加 V4 真实价格锚句子",
+        "rationale": "用户事实纠错 · 用真实 DeepSeek 系列下一代取代虚构 Lyra-1 · V4 当前价(Pro 输入 3 元/输出 6 元 · Flash 输入 1 元/输出 2 元)作为 0.1 元水位线的真实对照锚",
+        "v4_pricing_anchor": {
+          "v4_pro_input_cny_per_million": 3,
+          "v4_pro_output_cny_per_million": 6,
+          "v4_flash_input_cny_per_million": 1,
+          "v4_flash_output_cny_per_million": 2,
+          "v5_unified_cny_per_million": 0.1,
+          "leap_factor_vs_v4_pro_output": 60
+        },
+        "side_effect_negative": "Ch3 姜禾'Lyra'(古希腊七弦琴 + 古琴跨文化映射)诗意流失 · 文学性 -1 · round-010 候选补一句'她私下叫 V5 为 Lyra'",
+        "next_round_recommendation": "ch3_lyra_nickname_retain_or_stop"
+      },
+      {
+        "round": "010",
+        "type": "web_split_reader",
+        "weighted_total": 94.05,
+        "score_delta_pp": 0,
+        "completed_at": "2026-04-29T10:05:00+09:00",
+        "doc": "ceo-rounds/round-010.md",
+        "decision": "更新生成过程页并新增小说主体页 · web/index.html 负责展示 GEI 如何生成小说,web/novel.html 负责读取 novel.md 并渲染正文阅读体验",
+        "rationale": "用户要求双页结构:一个介绍生成过程,一个承载小说主体;同时同步 round-009 DeepSeek V5 内容更新",
+        "artifacts": [
+          "web/index.html",
+          "web/novel.html"
+        ],
+        "validation": {
+          "process_page_desktop": "1470x768 pass",
+          "novel_page_desktop": "1470x768 pass",
+          "novel_page_mobile": "390x844 pass",
+          "novel_page_chapters": 14,
+          "novel_page_toc": 14,
+          "console_errors": 0,
+          "console_warnings": 0
+        },
+        "next_round_recommendation": "stop_default"
+      },
+      {
+        "round": "011",
+        "type": "literary_retain",
+        "weighted_total": 94.25,
+        "score_delta_pp": 0.20,
+        "completed_at": "2026-04-29T10:30:00+09:00",
+        "doc": "ceo-rounds/round-011.md",
+        "decision": "Ch3 L289 后插入 ~145 字 · 姜禾在本地 config 给 DeepSeek V5 起私下昵称 Lyra · 古希腊七弦琴 ↔ 古琴跨文化映射回到正文",
+        "rationale": "round-009 全局 Lyra→V5 替换造成的文学性 -1 副作用闭合 · round-009 § 6 / round-010 § 6 候选 next round",
+        "scope": "Ch3 only · L289 与 L291 之间一段 · 其他章节 0 改动",
+        "char_delta": "+145",
+        "naming_split": {
+          "public_engineering_context": "DeepSeek V5",
+          "jiang_he_private_context": "Lyra"
+        },
+        "literary_dimension_delta": "+1",
+        "next_round_recommendation": "stop_default"
+      }
+    ]
+  },
+  "error_log": []
+}
