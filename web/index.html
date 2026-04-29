@@ -457,15 +457,19 @@
       gap: 0;
       border: 1px solid var(--line);
       background: rgba(255,255,255,.34);
+      height: 78vh;
       min-height: 620px;
-      max-height: 78vh;
+      max-height: 820px;
       overflow: hidden;
     }
     .explorer-side {
       border-right: 1px solid var(--line);
       overflow-y: auto;
+      overscroll-behavior: contain;
       background: rgba(255,255,255,.42);
       padding: 14px 0;
+      min-height: 0;
+      height: 100%;
     }
     .explorer-side details {
       border-bottom: 1px solid rgba(0,0,0,.06);
@@ -522,8 +526,11 @@
     }
     .explorer-main {
       overflow-y: auto;
+      overscroll-behavior: contain;
       padding: 28px clamp(20px, 3vw, 36px);
       background: rgba(255,255,255,.18);
+      min-height: 0;
+      height: 100%;
     }
     .explorer-main .doc-meta {
       margin: 0 0 12px;
@@ -663,24 +670,31 @@
     @media (max-width: 768px) {
       .explorer {
         grid-template-columns: 1fr;
+        height: auto;
         max-height: none;
         min-height: 0;
         border: 0;
         background: transparent;
+        overflow: visible;
       }
       .explorer-toggle { display: block; }
       .explorer-side {
         border-right: 0;
         border: 1px solid var(--line);
         max-height: 50vh;
+        height: auto;
         margin-bottom: 14px;
         display: none;
+        overflow-y: auto;
       }
       .explorer.open .explorer-side { display: block; }
       .explorer-main {
         padding: 18px;
         border: 1px solid var(--line);
         background: rgba(255,255,255,.34);
+        height: auto;
+        max-height: none;
+        overflow: visible;
       }
     }
   </style>
@@ -696,7 +710,7 @@
         <a href="#characters">人物</a>
         <a href="#chapters">章节</a>
         <a href="#read">档案浏览</a>
-        <a href="chapters/ch01.html">在线阅读</a>
+        <a href="/web/chapters/ch01.html">在线阅读</a>
       </nav>
     </div>
   </header>
@@ -909,20 +923,20 @@
           </div>
         </div>
         <div class="chapters">
-          <a class="chapter" href="chapters/ch01.html"><div class="num">Ch 01</div><div><h3>价格表</h3><p>Slack 八分钟零回复，会议第十一分钟陷入沉默。</p></div><div class="day">Day 0</div></a>
-          <a class="chapter" href="chapters/ch02.html"><div class="num">Ch 02</div><div><h3>最后一次代码评审</h3><p>Claude Code 写了 47 条，林行写到一半把手挪开。</p></div><div class="day">Day 1</div></a>
-          <a class="chapter" href="chapters/ch03.html"><div class="num">Ch 03</div><div><h3>19 岁的姜禾</h3><p>她不会写代码，但她会写约束。</p></div><div class="day">Day 5</div></a>
-          <a class="chapter" href="chapters/ch04.html"><div class="num">Ch 04</div><div><h3>影子工程师</h3><p>73% 工单被 triage-9 自动闭环，工程师变成签字员。</p></div><div class="day">Day 14</div></a>
-          <a class="chapter" href="chapters/ch04-half.html"><div class="num">Ch 4.5</div><div><h3>周末</h3><p>妻子沈知微第一次直接出场，说出“水位线”。</p></div><div class="day">Day 17</div></a>
-          <a class="chapter" href="chapters/ch05.html"><div class="num">Ch 05</div><div><h3>裁员邮件</h3><p>“我们没输给 AI，我们输给了 0.1 元。”</p></div><div class="day">Day 21</div></a>
-          <a class="chapter" href="chapters/ch06.html"><div class="num">Ch 06</div><div><h3>skill 学校</h3><p>下岗培训变成 Bounded Autonomy 入门。</p></div><div class="day">Day 35</div></a>
-          <a class="chapter" href="chapters/ch07.html"><div class="num">Ch 07</div><div><h3>创始人陆衡</h3><p>他在殡仪馆里重新想起数据护城河。</p></div><div class="day">Day 45</div></a>
-          <a class="chapter" href="chapters/ch08.html"><div class="num">Ch 08</div><div><h3>软件葬礼</h3><p>Manus 朗读 README，archived 仓库数投影在墙上。</p></div><div class="day">Day 70</div></a>
-          <a class="chapter" href="chapters/ch09.html"><div class="num">Ch 09</div><div><h3>范式之争</h3><p>数据、审美、愿意慢的能力，三种答案第一次同桌。</p></div><div class="day">Day 90</div></a>
-          <a class="chapter" href="chapters/ch10.html"><div class="num">Ch 10</div><div><h3>一个人公司</h3><p>14 个 agent 在另一个房间工作，姜禾自己打了那个电话。</p></div><div class="day">Day 110</div></a>
-          <a class="chapter" href="chapters/ch11.html"><div class="num">Ch 11</div><div><h3>林行的转身</h3><p>他没离开软件行业，只是不再做 agent 替他做的部分。</p></div><div class="day">Day 130</div></a>
-          <a class="chapter" href="chapters/ch12.html"><div class="num">Ch 12</div><div><h3>陆衡的反扑</h3><p>衡安 ARR 5000 万，垂直行业的真实数字不是平均数。</p></div><div class="day">Day 150</div></a>
-          <a class="chapter" href="chapters/ch13.html"><div class="num">Ch 13</div><div><h3>第 181 天</h3><p>代码会被记住吗？会的，被它配得上的人记住。</p></div><div class="day">Day 175-181</div></a>
+          <a class="chapter" href="/web/chapters/ch01.html"><div class="num">Ch 01</div><div><h3>价格表</h3><p>Slack 八分钟零回复，会议第十一分钟陷入沉默。</p></div><div class="day">Day 0</div></a>
+          <a class="chapter" href="/web/chapters/ch02.html"><div class="num">Ch 02</div><div><h3>最后一次代码评审</h3><p>Claude Code 写了 47 条，林行写到一半把手挪开。</p></div><div class="day">Day 1</div></a>
+          <a class="chapter" href="/web/chapters/ch03.html"><div class="num">Ch 03</div><div><h3>19 岁的姜禾</h3><p>她不会写代码，但她会写约束。</p></div><div class="day">Day 5</div></a>
+          <a class="chapter" href="/web/chapters/ch04.html"><div class="num">Ch 04</div><div><h3>影子工程师</h3><p>73% 工单被 triage-9 自动闭环，工程师变成签字员。</p></div><div class="day">Day 14</div></a>
+          <a class="chapter" href="/web/chapters/ch04-half.html"><div class="num">Ch 4.5</div><div><h3>周末</h3><p>妻子沈知微第一次直接出场，说出“水位线”。</p></div><div class="day">Day 17</div></a>
+          <a class="chapter" href="/web/chapters/ch05.html"><div class="num">Ch 05</div><div><h3>裁员邮件</h3><p>“我们没输给 AI，我们输给了 0.1 元。”</p></div><div class="day">Day 21</div></a>
+          <a class="chapter" href="/web/chapters/ch06.html"><div class="num">Ch 06</div><div><h3>skill 学校</h3><p>下岗培训变成 Bounded Autonomy 入门。</p></div><div class="day">Day 35</div></a>
+          <a class="chapter" href="/web/chapters/ch07.html"><div class="num">Ch 07</div><div><h3>创始人陆衡</h3><p>他在殡仪馆里重新想起数据护城河。</p></div><div class="day">Day 45</div></a>
+          <a class="chapter" href="/web/chapters/ch08.html"><div class="num">Ch 08</div><div><h3>软件葬礼</h3><p>Manus 朗读 README，archived 仓库数投影在墙上。</p></div><div class="day">Day 70</div></a>
+          <a class="chapter" href="/web/chapters/ch09.html"><div class="num">Ch 09</div><div><h3>范式之争</h3><p>数据、审美、愿意慢的能力，三种答案第一次同桌。</p></div><div class="day">Day 90</div></a>
+          <a class="chapter" href="/web/chapters/ch10.html"><div class="num">Ch 10</div><div><h3>一个人公司</h3><p>14 个 agent 在另一个房间工作，姜禾自己打了那个电话。</p></div><div class="day">Day 110</div></a>
+          <a class="chapter" href="/web/chapters/ch11.html"><div class="num">Ch 11</div><div><h3>林行的转身</h3><p>他没离开软件行业，只是不再做 agent 替他做的部分。</p></div><div class="day">Day 130</div></a>
+          <a class="chapter" href="/web/chapters/ch12.html"><div class="num">Ch 12</div><div><h3>陆衡的反扑</h3><p>衡安 ARR 5000 万，垂直行业的真实数字不是平均数。</p></div><div class="day">Day 150</div></a>
+          <a class="chapter" href="/web/chapters/ch13.html"><div class="num">Ch 13</div><div><h3>第 181 天</h3><p>代码会被记住吗？会的，被它配得上的人记住。</p></div><div class="day">Day 175-181</div></a>
         </div>
       </div>
     </section>
@@ -933,7 +947,7 @@
           <p class="kicker">Document explorer</p>
           <div>
             <h2>所有生成档案，一个浏览器。</h2>
-            <p class="intro">左侧菜单按类别列出全部生成档案,右侧实时渲染 Markdown。涵盖大纲与设定、需求与质量、Phase D 全部 16 轮 CEO rounds(round-000 到 round-015)、状态机与全文。在线章节阅读器仍在 <a href="chapters/ch01.html">chapters/ch01.html</a>。</p>
+            <p class="intro">左侧菜单按类别列出全部生成档案,右侧实时渲染 Markdown。涵盖大纲与设定、需求与质量、Phase D 全部 16 轮 CEO rounds(round-000 到 round-015)、状态机与全文。在线章节阅读器仍在 <a href="/web/chapters/ch01.html">chapters/ch01.html</a>。</p>
           </div>
         </div>
 
