@@ -2,10 +2,10 @@
   "$schema": "https://gei-agent.local/schemas/pipeline-state.schema.json",
   "pipeline_version": "v6.1",
   "created_at": "2026-04-29T00:30:00Z",
-  "updated_at": "2026-04-29T05:30:00Z",
+  "updated_at": "2026-04-29T05:50:00Z",
   "output_dir": "output/零点一元",
   "current_phase": "D",
-  "current_step": "D.round-017-complete",
+  "current_step": "D.round-018-complete",
   "phase_status": {
     "A": "completed",
     "B": "completed",
@@ -39,7 +39,8 @@
     "D.round-014-web-full-reader",
     "D.round-015-web-doc-explorer",
     "D.round-016-web-bugfix-paths-scroll",
-    "D.round-017-section-reorder"
+    "D.round-017-section-reorder",
+    "D.round-018-hero-cta-phase-d-refresh"
   ],
   "confirmed_params": {
     "customer_name": "小说创作",
@@ -470,6 +471,18 @@
         "decision": "index.html 节序对换:档案浏览 #read → 章节 #chapters · 顶导同步",
         "rationale": "用户指令 · 阅读漏斗:先看生成过程产物再读章节正文,对 GEI 项目感兴趣的读者更顺",
         "changes": "1 处 nav swap + 1 处 body section splice · 0 内容改动",
+        "next_round_recommendation": "stop_default"
+      },
+      {
+        "round": "018",
+        "type": "hero_cta_phase_d_refresh",
+        "weighted_total": 95.0,
+        "score_delta_pp": 0.0,
+        "completed_at": "2026-04-29T05:50:00Z",
+        "doc": "ceo-rounds/round-018.md",
+        "decision": "Hero 区加双 CTA(直接阅读 + 看生成过程)+ Phase D 描述从 9 轮 → 17 轮重写 + 评分 94.05→95.00 同步",
+        "rationale": "用户指令 · 转化漏斗 + 文档时效性 双补",
+        "changes": "5 处 string.replace + 1 段 CSS 追加 · 0 内容改动 · 0 误伤(全 assert)",
         "next_round_recommendation": "stop_default"
       }
     ]

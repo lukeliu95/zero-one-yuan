@@ -697,6 +697,17 @@
         overflow: visible;
       }
     }
+  
+    .hero-cta { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+    .cta-primary, .cta-secondary { display: inline-flex; align-items: center; padding: 11px 22px; border-radius: 999px; font-weight: 600; font-size: 15px; letter-spacing: 0.02em; text-decoration: none; transition: transform .15s ease, background .15s ease; }
+    .cta-primary { background: var(--teal, #7CD2D5); color: #0e1117; }
+    .cta-primary:hover { transform: translateY(-1px); background: #9adfdf; }
+    .cta-secondary { background: rgba(255,255,255,.08); color: #fff; border: 1px solid rgba(255,255,255,.18); }
+    .cta-secondary:hover { background: rgba(255,255,255,.14); }
+    @media (max-width: 640px) {
+      .hero-cta { width: 100%; }
+      .cta-primary, .cta-secondary { flex: 1; justify-content: center; }
+    }
   </style>
 </head>
 <body>
@@ -729,9 +740,13 @@
           <div class="hero-stats">
             <span><b>13</b>章节闭合</span>
             <span><b>181</b>天时间线</span>
-            <span><b>94.05</b>最终评分</span>
+            <span><b>95.00</b>最终评分</span>
           </div>
           <p class="byline">作者 · <a href="https://x.com/LukeLiu95" rel="noopener">刘仙升 @LukeLiu95</a></p>
+          <div class="hero-cta">
+            <a class="cta-primary" href="/web/chapters/ch01.html">直接阅读 →</a>
+            <a class="cta-secondary" href="#read">看生成过程</a>
+          </div>
         </aside>
       </div>
     </section>
@@ -742,7 +757,7 @@
           <p class="kicker">Process</p>
           <div>
             <h2>从一句价格表，长成一部小说。</h2>
-      <p class="intro">项目状态显示 A/B/C/D 四阶段已完成。生成过程不是“直接写正文”，而是先把主题、验收标准、世界规则和人物动作固定，再通过 9 轮 Phase D 把正文补全、抛光、审计，并完成 DeepSeek V5 的真实模型锚定。</p>
+      <p class="intro">项目状态显示 A/B/C/D 四阶段已完成。生成过程不是“直接写正文”，而是先把主题、验收标准、世界规则和人物动作固定，再通过 17 轮 Phase D 把正文补全、抛光、审计、模型锚定，再做 web 阅读器、文档浏览器、路径修复与信息架构调整,把交付物从纸面推到生产线。</p>
           </div>
         </div>
         <div class="process" role="list">
@@ -779,12 +794,13 @@
           <article class="phase phase-d" role="listitem">
             <div class="tag"><span class="dot"></span>Phase D</div>
             <h3>产品进化</h3>
-            <p>9 轮 CEO round 逐步补齐：妻子戏、术语迁移、全书扩写、章节抛光、事实纠错、一致性审计与 DeepSeek V5 模型重锚。</p>
+            <p>17 轮 CEO round 把"写完"推成"交付":前 9 轮做内容(妻子戏、术语迁移、全书扩写、章节抛光、事实纠错、一致性审计、DeepSeek V5 模型重锚),后 8 轮做产品化(web 落地页、全文 HTML 阅读器、双栏文档浏览器、路径修复、IA 节序调整)。</p>
             <ul>
-              <li>第 5-13 章一次性闭合</li>
-              <li>Claude Code / Manus 职能纠偏</li>
-              <li>DeepSeek V5 真实模型锚定</li>
-              <li>最终评分 94.05</li>
+              <li>r001-007 · 内容补齐 + 三轴一致性审计</li>
+              <li>r008-010 · web 落地页 + Vercel 部署 + split reader</li>
+              <li>r011-013 · 文学性 retain + 域名上线</li>
+              <li>r014-017 · 全文 HTML + 文档浏览器 + 路径修复 + 节序调整</li>
+              <li>baseline 85.15 → 最终评分 95.00 (+9.85pp)</li>
             </ul>
           </article>
         </div>
@@ -919,7 +935,7 @@
           <p class="kicker">Document explorer</p>
           <div>
             <h2>所有生成档案，一个浏览器。</h2>
-            <p class="intro">左侧菜单按类别列出全部生成档案,右侧实时渲染 Markdown。涵盖大纲与设定、需求与质量、Phase D 全部 16 轮 CEO rounds(round-000 到 round-015)、状态机与全文。在线章节阅读器仍在 <a href="/web/chapters/ch01.html">chapters/ch01.html</a>。</p>
+            <p class="intro">左侧菜单按类别列出全部生成档案,右侧实时渲染 Markdown。涵盖大纲与设定、需求与质量、Phase D 全部 18 份 CEO rounds 文档(round-000 baseline + round-001 到 round-017)、状态机与全文。在线章节阅读器仍在 <a href="/web/chapters/ch01.html">chapters/ch01.html</a>。</p>
           </div>
         </div>
 
